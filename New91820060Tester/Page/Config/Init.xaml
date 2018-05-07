@@ -1,0 +1,45 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Actions="clr-namespace:MahApps.Metro.Actions;assembly=MahApps.Metro"
+	x:Class="New91820060Tester.Init"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Unloaded="Page_Unloaded" Height="632" Width="1178" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type Label}">
+            <!--<Style.Setters>コンテンツプロパティのため省略可能-->
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <!--<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Direction="0" Color="Aqua"  BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>-->
+        </Style>
+        <Storyboard x:Key="StoryboardTickOn"/>
+
+
+
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardTickOn}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Canvas>
+        <Button x:Name="buttonInit" Content="初期化開始"  Height="142" Canvas.Left="78" Canvas.Top="72" Width="444" FontSize="48" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}" Click="buttonInit_Click"/>
+        <Label x:Name="labelMess" Height="322" Canvas.Left="78" Canvas.Top="237" Width="866" FontFamily="Meiryo UI" FontSize="72" Foreground="#FF09A9F3" BorderBrush="{x:Null}"/>
+
+    </Canvas>
+</Page>

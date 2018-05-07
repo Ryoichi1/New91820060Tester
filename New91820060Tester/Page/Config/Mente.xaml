@@ -1,0 +1,149 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Actions="clr-namespace:MahApps.Metro.Actions;assembly=MahApps.Metro"
+	x:Class="New91820060Tester.Mente"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Unloaded="Page_Unloaded" Height="632" Width="1178" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type Label}">
+            <!--<Style.Setters>コンテンツプロパティのため省略可能-->
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <!--<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Direction="0" Color="Aqua"  BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>-->
+        </Style>
+        <Storyboard x:Key="StoryboardTickOn"/>
+
+
+
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource StoryboardTickOn}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Canvas>
+        <Canvas Height="125" Canvas.Left="11" Canvas.Top="13" Width="469">
+            <Canvas.Background>
+                <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
+            </Canvas.Background>
+            <Button x:Name="buttonPow" Content="電源"  Height="40" Canvas.Left="10" Canvas.Top="9" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonPow_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <Button x:Name="buttonComDisconnect" Content="ターゲット通信切断"  Height="40" Canvas.Left="150" Canvas.Top="9" Width="137" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonComDisconnect_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <Button x:Name="buttonWriteTestFw" Content="テストFW書き込み"  Height="40" Canvas.Left="10" Canvas.Top="65" Width="137" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}" Click="buttonWriteTestFw_Click"/>
+            <Button x:Name="buttonStamp" Content="合格印"  Height="40" Canvas.Left="164" Canvas.Top="65" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonStamp_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <Button x:Name="buttonSafetyRelay" Content="安全リレー"  Height="40" Canvas.Left="300" Canvas.Top="9" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSafetyRelay_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+        </Canvas>
+        <Canvas Height="135" Canvas.Left="11" Canvas.Top="158" Width="230">
+            <Canvas.Background>
+                <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
+            </Canvas.Background>
+            <RadioButton x:Name="rbTempP60" Content="60℃ 662.2Ω" Height="25" Canvas.Left="19" Canvas.Top="39" Width="175" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbTempP60_Checked"/>
+            <RadioButton x:Name="rbTempP20" Content="20℃ 2.644kΩ" Height="25" Canvas.Left="19" Canvas.Top="69" Width="175" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbTempP20_Checked"/>
+            <RadioButton x:Name="rbTempM20" Content="-20℃ 15.13kΩ" Height="25" Canvas.Left="19" Canvas.Top="99" Width="175" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbTempM20_Checked"/>
+            <Label Content="サーミスタ切り替え" Height="33" Canvas.Left="1" Canvas.Top="1" Width="144" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        </Canvas>
+        <Canvas x:Name="CanvasComm" Height="174" Canvas.Left="13" Canvas.Top="307" Width="565" RenderTransformOrigin="0.5,0.5">
+            <Canvas.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="11"/>
+                    <Setter Property="Width" Value="58"/>
+                    <Setter Property="Foreground"  Value="white"/>
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="#FF04FFF4" BlurRadius="20" ShadowDepth="0" Direction="0"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Canvas.Resources>
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.082"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.332"/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Canvas.Background>
+                <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
+            </Canvas.Background>
+            <TextBlock Text="{Binding TX}" Height="34" Canvas.Left="30" Canvas.Top="72" Width="462" FontSize="14" Padding="5,0,0,0" TextWrapping="Wrap" Foreground="White">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="#FF08A2F9" Opacity="0.3"/>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Text="{Binding RX}" Height="34" Canvas.Left="31" Canvas.Top="111" Width="461" FontSize="14" Padding="5,0,0,0" TextWrapping="Wrap" Foreground="White">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="#FF08A2F9" Opacity="0.3"/>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock x:Name="textBlock2_Copy5" TextWrapping="Wrap" Text="Tx" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="21" RenderTransformOrigin="0.5,0.5" Canvas.Top="76" Canvas.Left="8">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock2_Copy6" TextWrapping="Wrap" Text="Rx" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="22" RenderTransformOrigin="0.5,0.5" Canvas.Top="114" Canvas.Left="7">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" Text="HOST--TARGET 通信" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="199" RenderTransformOrigin="0.5,0.5" Canvas.Top="4" Canvas.Left="11">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Label Content="" Height="1" Canvas.Left="8" Canvas.Top="28" Width="293" Background="#FF0388F7">
+                <Label.Effect>
+                    <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
+                </Label.Effect>
+            </Label>
+            <Button x:Name="buttonSendMain" Content="送信"  Height="29" Canvas.Left="31" Canvas.Top="36" Width="90" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}" Click="buttonSendMain_Click"/>
+            <RadioButton x:Name="rbRs232c" Content="RS232C" Height="25" Canvas.Left="322" Canvas.Top="37" Width="107" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbRs232c_Checked"/>
+            <RadioButton x:Name="rbRs422" Content="RS422" Height="25" Canvas.Left="434" Canvas.Top="37" Width="111" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbRs422_Checked"/>
+            <TextBox x:Name="tbCommand" Height="29" Canvas.Left="132" TextWrapping="Wrap" Text="TextBox" Canvas.Top="36" Width="158" Background="{x:Null}" FontFamily="Segoe UI Light" FontSize="16"/>
+        </Canvas>
+        <Canvas Height="42" Canvas.Left="253" Canvas.Top="162" Width="309">
+            <Canvas.Background>
+                <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
+            </Canvas.Background>
+            <Button x:Name="buttonMeasVol" Content="電圧計測"  Height="24" Canvas.Left="10" Canvas.Top="10" Width="80" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonMeasVol_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <TextBlock x:Name="tbVol" Height="24" Canvas.Left="209" Canvas.Top="10" Width="90" FontSize="18" Padding="5,0,0,0" TextWrapping="Wrap" Foreground="White">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="#FF08A2F9" Opacity="0.3"/>
+                </TextBlock.Background>
+            </TextBlock>
+            <Button x:Name="buttonMeasVol_Copy" Content="電圧計測"  Height="24" Canvas.Left="95" Canvas.Top="10" Width="80" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonMeasVol_Copy_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+        </Canvas>
+
+    </Canvas>
+</Page>

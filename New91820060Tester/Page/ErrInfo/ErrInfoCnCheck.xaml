@@ -1,0 +1,106 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="New91820060Tester.ErrInfoCnCheck"
+	xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Height="600" Width="1300" Loaded="Page_Loaded">
+    <Canvas>
+        <Button x:Name="buttonReturn" Content="テスト画面に戻る" Height="57" Canvas.Left="10" Canvas.Top="10" Width="174" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" FontSize="18" Click="buttonReturn_Click"  />
+        <TextBlock Height="30" Canvas.Left="23" TextWrapping="Wrap" Text="NGリスト" Canvas.Top="98" Width="119" Foreground="White" FontSize="20"/>
+        <Label Height="379" Canvas.Left="23" Content="{Binding NgList}" Canvas.Top="133" Width="232" FontSize="18" Background="{x:Null}" BorderBrush="#FF08BCFF" BorderThickness="1"/>
+        <Image Height="558" Canvas.Left="294" Canvas.Top="19" Width="682" Source="/New91820060Tester;component/Resources/Pic/91820060シルク図.jpg" IsEnabled="False"/>
+        <Rectangle x:Name="RecCN1" Height="32" Canvas.Left="611" Canvas.Top="501" Width="61" Visibility="{Binding VisCN23}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN2" Height="90" Canvas.Left="913" Canvas.Top="83" Width="29" Visibility="{Binding VisCN11_12}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN3" Height="197" Canvas.Left="476" Canvas.Top="98" Width="27" Visibility="{Binding VisCN16_22}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_1" Height="117" Canvas.Left="910" Canvas.Top="345" Width="29" Visibility="{Binding VisCN26}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2" Height="105" Canvas.Left="325" Canvas.Top="149" Width="31" Visibility="{Binding VisCN13_15}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN9" Height="29" Canvas.Left="616" Canvas.Top="43" Width="284" Visibility="{Binding VisCN1_10}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN3_Copy" Height="52" Canvas.Left="539" Canvas.Top="126" Width="20" Visibility="{Binding VisCN24_30}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN3_Copy1" Height="17" Canvas.Left="493" Canvas.Top="55" Width="79" Visibility="{Binding VisCN24_30}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN3_Copy2" Height="21" Canvas.Left="441" Canvas.Top="55" Width="44" Visibility="{Binding VisCN16_22}">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy" Height="80" Canvas.Left="326" Canvas.Top="289" Width="31" Visibility="{Binding VisCN13_15}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy1" Height="78" Canvas.Left="324" Canvas.Top="434" Width="31" Visibility="{Binding VisCN13_15}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy2" Height="312" Canvas.Left="588" Canvas.Top="133" Width="25" Visibility="{Binding VisCN101_107}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy3" Height="15" Canvas.Left="677" Canvas.Top="97" Width="171" Visibility="{Binding VisCN108_115}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy4" Height="15" Canvas.Left="676" Canvas.Top="457" Width="171" Visibility="{Binding VisCN110_114}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy5" Height="27" Canvas.Left="615" Canvas.Top="95" Width="32" Visibility="{Binding VisCN108_115}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy6" Height="26" Canvas.Left="856" Canvas.Top="239" Width="18" Visibility="{Binding VisCN109_117}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy7" Height="35" Canvas.Left="856" Canvas.Top="322" Width="18" Visibility="{Binding VisCN109_117}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="RecCN4_2_Copy8" Height="57" Canvas.Left="849" Canvas.Top="392" Width="21" Visibility="{Binding VisCN109_117}" RenderTransformOrigin="0.489,-3.333">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFF03CBF" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Canvas>
+</Page>
