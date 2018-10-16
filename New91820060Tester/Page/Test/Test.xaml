@@ -776,9 +776,9 @@
             <Canvas.Background>
                 <SolidColorBrush Color="White" Opacity="0.08"/>
             </Canvas.Background>
-            <Label Content="{Binding FwVer}" Height="35" Canvas.Left="53" Canvas.Top="36" Width="112" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="24"/>
-            <Label Content="{Binding FwSum}" Height="36" Canvas.Left="247" Canvas.Top="35" Width="150" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="24"/>
-            <TextBlock x:Name="textBlock2_Copy4" TextWrapping="Wrap" Text="Ver" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="28" Width="39" RenderTransformOrigin="0.5,0.5" Canvas.Top="41" Canvas.Left="14">
+            <Label Height="35" Canvas.Left="47" Canvas.Top="42" Width="110" BorderBrush="{x:Null}" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="24" Content="{Binding FwVer}"/>
+            <Label Height="31" Canvas.Left="244" Canvas.Top="43" Width="92" BorderBrush="{x:Null}" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="24" Content="{Binding FwSum}"/>
+            <TextBlock x:Name="textBlock2_Copy4" TextWrapping="Wrap" Text="Ver" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="17" Width="27" RenderTransformOrigin="0.5,0.5" Canvas.Top="54" Canvas.Left="15">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -788,7 +788,7 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock x:Name="textBlock2_Copy6" TextWrapping="Wrap" Text="Sum" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="28" Width="52" RenderTransformOrigin="0.5,0.5" Canvas.Top="38" Canvas.Left="195">
+            <TextBlock x:Name="textBlock2_Copy6" TextWrapping="Wrap" Text="Sum" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="41" RenderTransformOrigin="0.5,0.5" Canvas.Top="54" Canvas.Left="197">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -823,6 +823,16 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
+            <Label Content="" Height="1" Canvas.Left="14" Canvas.Top="72" Width="145" Background="White">
+                <Label.Effect>
+                    <DropShadowEffect Color="#FF0017FF" Direction="0" ShadowDepth="0" BlurRadius="20"/>
+                </Label.Effect>
+            </Label>
+            <Label Content="" Height="1" Canvas.Left="194" Canvas.Top="72" Width="145" Background="White">
+                <Label.Effect>
+                    <DropShadowEffect Color="#FF0017FF" Direction="0" ShadowDepth="0" BlurRadius="20"/>
+                </Label.Effect>
+            </Label>
         </Canvas>
         <Canvas x:Name="canvasTestSetting_Copy" Height="95" Canvas.Left="814" Canvas.Top="146" Width="360" IsEnabled="{Binding TestSettingEnable}">
             <Canvas.Background>
