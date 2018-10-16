@@ -33,7 +33,7 @@
         <Image x:Name="Pic4" Canvas.Left="451" Canvas.Top="44" Width="133" Cursor="Hand" PreviewMouseLeftButtonDown="Pic4_PreviewMouseLeftButtonDown" Height="75">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="128"
-        			UriSource="/Resources/Pic/baby7.jpg"/>
+        			UriSource="/Resources/Pic/moon.jpg"/>
             </Image.Source>
         </Image>
         <TextBlock Height="29" Canvas.Left="31" TextWrapping="Wrap" Text="背景透明度" Canvas.Top="159" Width="137" Foreground="White" FontSize="18"/>

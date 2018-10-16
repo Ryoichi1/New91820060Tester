@@ -282,6 +282,7 @@
     <Resource Include="Resources\Pic\X.jpg" />
     <Resource Include="Resources\Pic\91820060シルク図.jpg" />
     <Resource Include="Resources\Pic\taki.jpg" />
+    <Resource Include="Resources\Pic\moon.jpg" />
     <Content Include="Resources\Wav\PT100.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

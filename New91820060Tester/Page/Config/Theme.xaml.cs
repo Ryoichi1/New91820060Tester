@@ -43,7 +43,7 @@ namespace New91820060Tester
 
         private void Pic4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            State.VmMainWindow.Theme = "Resources/Pic/baby7.jpg";
+            State.VmMainWindow.Theme = "Resources/Pic/moon.jpg";
             General.Show();
         }
         private void Pic5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
