@@ -155,5 +155,15 @@ namespace New91820060Tester
         {
             State.VmTestResults.ExpU9_1 = General.OnBrush;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            State.VmMainWindow.Flyout = !State.VmMainWindow.Flyout;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            State.VmTestStatus.RetryLabelVis = Visibility.Visible;
+        }
     }
 }

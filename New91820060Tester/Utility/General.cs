@@ -11,7 +11,6 @@ using static System.Threading.Thread;
 namespace New91820060Tester
 {
 
-
     public static class General
     {
         public static EPX64S io1;
@@ -28,6 +27,8 @@ namespace New91820060Tester
         public static SoundPlayer soundNotice = null;
         public static SoundPlayer soundCutin = null;
         public static SoundPlayer soundSwCheck = null;
+        public static SoundPlayer soundPt100 = null;
+        public static SoundPlayer soundPt130 = null;
 
 
         public static SolidColorBrush DialogOnBrush = new SolidColorBrush();
@@ -48,6 +49,8 @@ namespace New91820060Tester
             General.soundNotice = new SoundPlayer(@"Resources\Wav\Notice.wav");
             General.soundCutin = new SoundPlayer(@"Resources\Wav\CutIn.wav");
             General.soundSwCheck = new SoundPlayer(@"Resources\Wav\SwCheck.wav");
+            General.soundPt100 = new SoundPlayer(@"Resources\Wav\Pt100.wav");
+            General.soundPt130 = new SoundPlayer(@"Resources\Wav\Pt130.wav");
 
             //カラーテンプレートいろいろ
             OffBrush.Color = Colors.Transparent;
@@ -101,10 +104,65 @@ namespace New91820060Tester
                 "AssemblyVer " + State.AssemblyInfo,
                 "TestSpecVer " + State.TestSpec.TestSpecVer,
                 System.DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:mm:ss"),
+                State.VmMainWindow.Opecode,
+                State.VmMainWindow.Model,
                 State.VmMainWindow.Operator,
-                //State._item == ITEM._002? "91821199-002/R" : "91821199-003/R",
-                //State._item == ITEM._002? State.TestSpec._002_Ver : State.TestSpec._003_Ver,
-                //State._item == ITEM._002? State.TestSpec._002_Sum : State.TestSpec._003_Sum,
+                State.VmTestStatus.FwVer,
+                State.VmTestStatus.FwSum,
+                State.VmTestResults.Vol5v,
+                State.VmTestResults.Cn1_P60,
+                State.VmTestResults.Cn2_P60,
+                State.VmTestResults.Cn3_P60,
+                State.VmTestResults.Cn4_P60,
+                State.VmTestResults.Cn5_P60,
+                State.VmTestResults.Cn6_P60,
+                State.VmTestResults.Cn7_P60,
+                State.VmTestResults.Cn8_P60,
+                State.VmTestResults.Cn9_P60,
+                State.VmTestResults.Cn10_P60,
+
+                State.VmTestResults.Cn1_P20,
+                State.VmTestResults.Cn2_P20,
+                State.VmTestResults.Cn3_P20,
+                State.VmTestResults.Cn4_P20,
+                State.VmTestResults.Cn5_P20,
+                State.VmTestResults.Cn6_P20,
+                State.VmTestResults.Cn7_P20,
+                State.VmTestResults.Cn8_P20,
+                State.VmTestResults.Cn9_P20,
+                State.VmTestResults.Cn10_P20,
+
+                State.VmTestResults.Cn1_M20,
+                State.VmTestResults.Cn2_M20,
+                State.VmTestResults.Cn3_M20,
+                State.VmTestResults.Cn4_M20,
+                State.VmTestResults.Cn5_M20,
+                State.VmTestResults.Cn6_M20,
+                State.VmTestResults.Cn7_M20,
+                State.VmTestResults.Cn8_M20,
+                State.VmTestResults.Cn9_M20,
+                State.VmTestResults.Cn10_M20,
+
+                State.VmTestResults.VolDaout50_116,
+                State.VmTestResults.VolDaout100_116,
+                State.VmTestResults.VolDaout50_117,
+                State.VmTestResults.VolDaout100_117,
+
+                State.VmTestResults.Cn11_Vol1,
+                State.VmTestResults.Cn11_Vol2,
+                State.VmTestResults.Cn12_Vol1,
+                State.VmTestResults.Cn12_Vol2,
+
+                State.VmTestResults.Cn11_In1,
+                State.VmTestResults.Cn11_In2,
+                State.VmTestResults.Cn12_In1,
+                State.VmTestResults.Cn12_In2,
+
+                PT100チェック.PtMode.ToString(),
+                State.VmTestResults.Non_Cal_100,
+                State.VmTestResults.Non_Cal_130,
+                State.VmTestResults.Cal_100,
+                State.VmTestResults.Cal_130,
 
             };
 
@@ -118,16 +176,16 @@ namespace New91820060Tester
                 var dataList = new List<string>();
                 dataList = MakePassTestData();
 
-                var OkDataFilePath = Constants.PassDataFolderPath + State.VmMainWindow.Opecode + ".csv";
+                var OkDataFilePath = State.PathForTestData + State.VmMainWindow.Opecode + ".csv";
 
                 if (!System.IO.File.Exists(OkDataFilePath))
                 {
                     //既存検査データがなければ新規作成
-                    File.Copy(Constants.PassDataFolderPath + "Format.csv", OkDataFilePath);
+                    File.Copy(Constants.PassTestDataFormatPath, OkDataFilePath);
                 }
 
                 // リストデータをすべてカンマ区切りで連結する
-                string stCsvData = string.Join(",", dataList);
+                var stCsvData = string.Join(",", dataList);
 
                 // appendをtrueにすると，既存のファイルに追記
                 // falseにすると，ファイルを新規作成する
@@ -161,7 +219,7 @@ namespace New91820060Tester
                 if (!File.Exists(NgDataFilePath))
                 {
                     //既存検査データがなければ新規作成
-                    File.Copy(Constants.FailDataFolderPath + "FormatNg.csv", NgDataFilePath);
+                    File.Copy(Constants.FailTestDataFormatPath, NgDataFilePath);
                 }
 
                 var stArrayData = dataList.ToArray();
@@ -203,7 +261,7 @@ namespace New91820060Tester
         //**************************************************************************  
 
         //WAVEファイルを再生する（非同期で再生）
-        public static void PlaySound(SoundPlayer p)
+        public static void PlaySoundAsync(SoundPlayer p)
         {
             //再生されているときは止める
             if (player != null)
@@ -215,7 +273,7 @@ namespace New91820060Tester
             player.Play();
         }
         //WAVEファイルを再生する（同期で再生）
-        public static void PlaySound2(SoundPlayer p)
+        public static void PlaySoundSync(SoundPlayer p)
         {
             //再生されているときは止める
             if (player != null)
@@ -289,6 +347,7 @@ namespace New91820060Tester
             Flags.PowOn = false;
             Flags.ClickStopButton = false;
             Flags.Testing = false;
+            Flags.Retry = false;
 
             State.VmComm.ColRs232c = General.OnBrush;
             State.VmComm.ColRs422 = General.OffBrush;
@@ -306,10 +365,41 @@ namespace New91820060Tester
 
         }
 
+        public static bool Check日常点検データ()
+        {
+            try
+            {
+                // StringBuilder クラスの新しいインスタンスを生成する
+                var sbTarget = new System.Text.StringBuilder();
+
+                // 日常点検データファイルを開く
+                using (var sr = new System.IO.StreamReader(Constants.Path_日常点検データ, Encoding.GetEncoding("Shift_JIS")))//ANSI = Shift_JIS 
+                {
+                    // ストリームの末尾まで繰り返す
+                    while (!sr.EndOfStream)
+                    {
+                        // ファイルから一行読み込む
+                        var line = sr.ReadToEnd();
+                        // 出力する
+                        sbTarget.Append(line);
+                    }
+                }
+                var allData = sbTarget.ToString();
+                var today = System.DateTime.Now.ToString("yyyy/MM/dd");
+                return allData.IndexOf(today) >= 0;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
 
         public static void CheckAll周辺機器フラグ()
         {
-            Flags.AllOk周辺機器接続 = Flags.StateMbed && Flags.StateEpx64_1 && Flags.StateEpx64_2 && Flags.State232C && Flags.State422;
+            Flags.AllOk周辺機器接続 = Flags.StateMbed && Flags.StateEpx64_1 && Flags.StateEpx64_2 && Flags.State232C && Flags.State422 && Flags.StateG7sa;
         }
 
 
@@ -388,8 +478,8 @@ namespace New91820060Tester
                     {
                         break;
                     }
-                               
-                    Flags.StateEpx64_1 =  General.io1.InitEpx64S(0b0001_0111, Constants.SerialEpx64s_1);//
+
+                    Flags.StateEpx64_1 = General.io1.InitEpx64S(0b0001_0111, Constants.SerialEpx64s_1);//
                     if (Flags.StateEpx64_1)
                     {
                         ResetIo();
@@ -412,14 +502,38 @@ namespace New91820060Tester
                     {
                         break;
                     }
-                               
-                    Flags.StateEpx64_2 =  General.io2.InitEpx64S(0b0000_0000, Constants.SerialEpx64s_2);//全ポート入力設定
+
+                    Flags.StateEpx64_2 = General.io2.InitEpx64S(0b0000_0000, Constants.SerialEpx64s_2);//全ポート入力設定
                     if (Flags.StateEpx64_2)
                         break;
 
                     Thread.Sleep(500);
                 }
                 StopIo2 = true;
+            });
+
+            //安全リレー（G7SA）の点検
+            bool StopG7sa = false;
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (Flags.StopInit周辺機器)
+                    {
+                        break;
+                    }
+
+                    if (!Flags.StateEpx64_2)//IO2の初期化待ち
+                    {
+                        Sleep(500);
+                        continue;
+                    }
+
+                    CheckSafetyG7sa();//
+                    break;
+
+                }
+                StopG7sa = true;
             });
 
 
@@ -430,7 +544,7 @@ namespace New91820060Tester
                     CheckAll周辺機器フラグ();
 
                     //EPX64Sの初期化の中で、K100、K101の溶着チェックを行っているが、これがNGだとしてもInit周辺機器()は終了する
-                    var IsAllStopped = Stop232 && Stop422 && StopMbed && StopIo1 && StopIo2;
+                    var IsAllStopped = Stop232 && Stop422 && StopMbed && StopIo1 && StopIo2 && StopG7sa;
 
                     if (Flags.AllOk周辺機器接続 || IsAllStopped) break;
                     Sleep(400);
@@ -474,7 +588,39 @@ namespace New91820060Tester
         public static bool GetG7saFb()
         {
             io2.ReadInputData(EPX64S.PORT.P7);
-            return (io2.P7InputData & 0b0010_0000) == 0;//強制ガイドリレーが正常にOFFしていれば、 P75が0になります
+            return (io2.P7InputData & 0b0010_0000) == 0;//強制ガイドリレーが正常にOFF（接点溶着無し）していれば、 P75が0になります
+        }
+
+        public static bool CheckEmergencyReset()
+        {
+            io1.ReadInputData(EPX64S.PORT.P3);
+            return (io1.P3InputData & 0b1000_0000) == 0;//非常停止スイッチが解除（試験機にAC200Vが供給されている）されていれば、 P37が0になります
+        }
+        /// <summary>
+        /// G7SAをOFFしてからチェックすること
+        /// 戻り値は無し、NGの場合はFlyout側に委譲する
+        /// </summary>
+        public static void CheckSafetyG7sa()
+        {
+            var result = GetG7saFb();
+            Flags.StateG7sa = result;
+            if (!result)
+            {
+                State.VmMainWindow.Flyout = true;
+                State.VmMainWindow.FlyoutMess = "安全リレーが故障しています！！！\r\n非常停止ボタンを押してください";
+            }
+        }
+
+        public static bool CheckPress()
+        {
+            General.io2.ReadInputData(EPX64S.PORT.P3);
+            return (io2.P3InputData & 0b1000_0000) == 0;
+        }
+
+        public static bool IsPinBoardForItem003()
+        {
+            io2.ReadInputData(EPX64S.PORT.P6);
+            return (io2.P6InputData & 0b1000_0000) == 0; //ITEM003用のピンボードがセットされていると、IO2 P67がLになります
         }
 
 
@@ -540,7 +686,11 @@ namespace New91820060Tester
 
         public static void SetG7SA(bool sw)
         {
+            if (sw) SetRY104(Flags.SetAdapterForItem004 ? true : false);
+            Sleep(300);
             io1.OutBit(EPX64S.PORT.P1, EPX64S.BIT.b7, sw ? EPX64S.OUT.H : EPX64S.OUT.L);
+            Flags.Ac200On = sw;
+            Sleep(150);
         }
 
 

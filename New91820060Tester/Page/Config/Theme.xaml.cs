@@ -48,7 +48,7 @@ namespace New91820060Tester
         }
         private void Pic5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            State.VmMainWindow.Theme = "Resources/Pic/X.jpg";
+            State.VmMainWindow.Theme = "Resources/Pic/taki.jpg";
             General.Show();
         }
 

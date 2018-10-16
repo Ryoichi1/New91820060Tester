@@ -69,17 +69,17 @@ namespace New91820060Tester
         /// USBハブにACアダプターから電源供給しないと、取り込んだAD値が高めになるので注意すること！！！
         /// </summary>
         /// <returns></returns>
-        public static (bool result, int adVal) MeasVol()
+        public static (bool result, double volData) MeasVol()
         {
             if (!LPC1768.SendData1768("R,Ad"))
                 return (false, 0);
 
-            var hexData = LPC1768.RecieveData; //mbedからは3桁16進で返ってっくる ex. C35
+            var strData = LPC1768.RecieveData; //mbedからは3桁16進で返ってっくる ex. C35
 
             //mbed 12ビットのADコンバーターを搭載
             //0(0V)～4095(0xFFF, 3.3V)
 
-            return (true, Convert.ToInt32(hexData, 16));
+            return (Double.TryParse(strData, out double buff), buff);
         }
 
         //**************************************************************************

@@ -196,9 +196,12 @@ namespace New91820060Tester
                 finally
                 {
                     Sleep(500);
-                    Fmp.Kill();
-                    Fmp.Close();
-                    Fmp.Dispose();
+                    if (Fmp != null)
+                    {
+                        Fmp.Kill();
+                        Fmp.Close();
+                        Fmp.Dispose();
+                    }
 
                     Sleep(600);
                     PowSupply(false);

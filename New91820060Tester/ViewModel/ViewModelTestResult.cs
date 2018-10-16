@@ -12,6 +12,21 @@ namespace New91820060Tester
 
         private Brush _ColVol5v;
         public Brush ColVol5v { get { return _ColVol5v; } set { SetProperty(ref _ColVol5v, value); } }
+        
+        //P65 COLD AD値
+        private string _ColdAd;
+        public string ColdAd { get { return _ColdAd; } set { SetProperty(ref _ColdAd, value); } }
+
+        private Brush _ColColdAd;
+        public Brush ColColdAd { get { return _ColColdAd; } set { SetProperty(ref _ColColdAd, value); } }
+        
+        //P65 HOT AD値
+        private string _HotAd;
+        public string HotAd { get { return _HotAd; } set { SetProperty(ref _HotAd, value); } }
+
+        private Brush _ColHotAd;
+        public Brush ColHotAd { get { return _ColHotAd; } set { SetProperty(ref _ColHotAd, value); } }
+        
 
 
         private string _VolDaout50_116;
@@ -44,62 +59,293 @@ namespace New91820060Tester
 
 
         //アナログ検査 CN1
-        private string _AnCn1_P60;
-        public string AnCn1_P60 { get { return _AnCn1_P60; } set { SetProperty(ref _AnCn1_P60, value); } }
+        private string _Cn1_P60;
+        public string Cn1_P60 { get { return _Cn1_P60; } set { SetProperty(ref _Cn1_P60, value); } }
 
-        private Brush _ColAnCn1_P60;
-        public Brush ColANCn1_P60 { get { return _ColAnCn1_P60; } set { SetProperty(ref _ColAnCn1_P60, value); } }
+        private Brush _ColCn1_P60;
+        public Brush ColCn1_P60 { get { return _ColCn1_P60; } set { SetProperty(ref _ColCn1_P60, value); } }
 
-        private string _AnCn1_P20;
-        public string AnCn1_P20 { get { return _AnCn1_P20; } set { SetProperty(ref _AnCn1_P20, value); } }
+        private string _Cn1_P20;
+        public string Cn1_P20 { get { return _Cn1_P20; } set { SetProperty(ref _Cn1_P20, value); } }
 
-        private Brush _ColAnCn1_P20;
-        public Brush ColANCn1_P20 { get { return _ColAnCn1_P20; } set { SetProperty(ref _ColAnCn1_P20, value); } }
+        private Brush _ColCn1_P20;
+        public Brush ColCn1_P20 { get { return _ColCn1_P20; } set { SetProperty(ref _ColCn1_P20, value); } }
 
-        private string _AnCn1_M20;
-        public string AnCn1_M20 { get { return _AnCn1_M20; } set { SetProperty(ref _AnCn1_M20, value); } }
+        private string _Cn1_M20;
+        public string Cn1_M20 { get { return _Cn1_M20; } set { SetProperty(ref _Cn1_M20, value); } }
 
-        private Brush _ColAnCn1_M20;
-        public Brush ColANCn1_M20 { get { return _ColAnCn1_M20; } set { SetProperty(ref _ColAnCn1_M20, value); } }
+        private Brush _ColCn1_M20;
+        public Brush ColCn1_M20 { get { return _ColCn1_M20; } set { SetProperty(ref _ColCn1_M20, value); } }
+
 
         //アナログ検査 CN2
-        private string _AnCn2_P60;
-        public string AnCn2_P60 { get { return _AnCn2_P60; } set { SetProperty(ref _AnCn2_P60, value); } }
+        private string _Cn2_P60;
+        public string Cn2_P60 { get { return _Cn2_P60; } set { SetProperty(ref _Cn2_P60, value); } }
 
-        private Brush _ColAnCn2_P60;
-        public Brush ColANCn2_P60 { get { return _ColAnCn2_P60; } set { SetProperty(ref _ColAnCn2_P60, value); } }
+        private Brush _ColCn2_P60;
+        public Brush ColCn2_P60 { get { return _ColCn2_P60; } set { SetProperty(ref _ColCn2_P60, value); } }
 
-        private string _AnCn2_P20;
-        public string AnCn2_P20 { get { return _AnCn2_P20; } set { SetProperty(ref _AnCn2_P20, value); } }
+        private string _Cn2_P20;
+        public string Cn2_P20 { get { return _Cn2_P20; } set { SetProperty(ref _Cn2_P20, value); } }
 
-        private Brush _ColAnCn2_P20;
-        public Brush ColANCn2_P20 { get { return _ColAnCn2_P20; } set { SetProperty(ref _ColAnCn2_P20, value); } }
+        private Brush _ColCn2_P20;
+        public Brush ColCn2_P20 { get { return _ColCn2_P20; } set { SetProperty(ref _ColCn2_P20, value); } }
 
-        private string _AnCn2_M20;
-        public string AnCn2_M20 { get { return _AnCn2_M20; } set { SetProperty(ref _AnCn2_M20, value); } }
+        private string _Cn2_M20;
+        public string Cn2_M20 { get { return _Cn2_M20; } set { SetProperty(ref _Cn2_M20, value); } }
 
-        private Brush _ColAnCn2_M20;
-        public Brush ColANCn2_M20 { get { return _ColAnCn2_M20; } set { SetProperty(ref _ColAnCn2_M20, value); } }
+        private Brush _ColCn2_M20;
+        public Brush ColCn2_M20 { get { return _ColCn2_M20; } set { SetProperty(ref _ColCn2_M20, value); } }
 
 
         //アナログ検査 CN3
-        private string _AnCn3_P60;
-        public string AnCn3_P60 { get { return _AnCn3_P60; } set { SetProperty(ref _AnCn3_P60, value); } }
+        private string _Cn3_P60;
+        public string Cn3_P60 { get { return _Cn3_P60; } set { SetProperty(ref _Cn3_P60, value); } }
 
-        private Brush _ColAnCn3_P60;
-        public Brush ColANCn3_P60 { get { return _ColAnCn3_P60; } set { SetProperty(ref _ColAnCn3_P60, value); } }
+        private Brush _ColCn3_P60;
+        public Brush ColCn3_P60 { get { return _ColCn3_P60; } set { SetProperty(ref _ColCn3_P60, value); } }
 
-        private string _AnCn3_P20;
-        public string AnCn3_P20 { get { return _AnCn3_P20; } set { SetProperty(ref _AnCn3_P20, value); } }
+        private string _Cn3_P20;
+        public string Cn3_P20 { get { return _Cn3_P20; } set { SetProperty(ref _Cn3_P20, value); } }
 
-        private Brush _ColAnCn3_P20;
-        public Brush ColANCn3_P20 { get { return _ColAnCn3_P20; } set { SetProperty(ref _ColAnCn3_P20, value); } }
+        private Brush _ColCn3_P20;
+        public Brush ColCn3_P20 { get { return _ColCn3_P20; } set { SetProperty(ref _ColCn3_P20, value); } }
 
-        private string _AnCn3_M20;
-        public string AnCn3_M20 { get { return _AnCn3_M20; } set { SetProperty(ref _AnCn3_M20, value); } }
+        private string _Cn3_M20;
+        public string Cn3_M20 { get { return _Cn3_M20; } set { SetProperty(ref _Cn3_M20, value); } }
 
-        private Brush _ColAnCn3_M20;
-        public Brush ColANCn3_M20 { get { return _ColAnCn3_M20; } set { SetProperty(ref _ColAnCn3_M20, value); } }
+        private Brush _ColCn3_M20;
+        public Brush ColCn3_M20 { get { return _ColCn3_M20; } set { SetProperty(ref _ColCn3_M20, value); } }
+
+        //アナログ検査 CN4
+        private string _Cn4_P60;
+        public string Cn4_P60 { get { return _Cn4_P60; } set { SetProperty(ref _Cn4_P60, value); } }
+
+        private Brush _ColCn4_P60;
+        public Brush ColCn4_P60 { get { return _ColCn4_P60; } set { SetProperty(ref _ColCn4_P60, value); } }
+
+        private string _Cn4_P20;
+        public string Cn4_P20 { get { return _Cn4_P20; } set { SetProperty(ref _Cn4_P20, value); } }
+
+        private Brush _ColCn4_P20;
+        public Brush ColCn4_P20 { get { return _ColCn4_P20; } set { SetProperty(ref _ColCn4_P20, value); } }
+
+        private string _Cn4_M20;
+        public string Cn4_M20 { get { return _Cn4_M20; } set { SetProperty(ref _Cn4_M20, value); } }
+
+        private Brush _ColCn4_M20;
+        public Brush ColCn4_M20 { get { return _ColCn4_M20; } set { SetProperty(ref _ColCn4_M20, value); } }
+
+
+        //アナログ検査 CN5
+        private string _Cn5_P60;
+        public string Cn5_P60 { get { return _Cn5_P60; } set { SetProperty(ref _Cn5_P60, value); } }
+
+        private Brush _ColCn5_P60;
+        public Brush ColCn5_P60 { get { return _ColCn5_P60; } set { SetProperty(ref _ColCn5_P60, value); } }
+
+        private string _Cn5_P20;
+        public string Cn5_P20 { get { return _Cn5_P20; } set { SetProperty(ref _Cn5_P20, value); } }
+
+        private Brush _ColCn5_P20;
+        public Brush ColCn5_P20 { get { return _ColCn5_P20; } set { SetProperty(ref _ColCn5_P20, value); } }
+
+        private string _Cn5_M20;
+        public string Cn5_M20 { get { return _Cn5_M20; } set { SetProperty(ref _Cn5_M20, value); } }
+
+        private Brush _ColCn5_M20;
+        public Brush ColCn5_M20 { get { return _ColCn5_M20; } set { SetProperty(ref _ColCn5_M20, value); } }
+
+
+        //アナログ検査 CN6
+        private string _Cn6_P60;
+        public string Cn6_P60 { get { return _Cn6_P60; } set { SetProperty(ref _Cn6_P60, value); } }
+
+        private Brush _ColCn6_P60;
+        public Brush ColCn6_P60 { get { return _ColCn6_P60; } set { SetProperty(ref _ColCn6_P60, value); } }
+
+        private string _Cn6_P20;
+        public string Cn6_P20 { get { return _Cn6_P20; } set { SetProperty(ref _Cn6_P20, value); } }
+
+        private Brush _ColCn6_P20;
+        public Brush ColCn6_P20 { get { return _ColCn6_P20; } set { SetProperty(ref _ColCn6_P20, value); } }
+
+        private string _Cn6_M20;
+        public string Cn6_M20 { get { return _Cn6_M20; } set { SetProperty(ref _Cn6_M20, value); } }
+
+        private Brush _ColCn6_M20;
+        public Brush ColCn6_M20 { get { return _ColCn6_M20; } set { SetProperty(ref _ColCn6_M20, value); } }
+
+
+        //アナログ検査 CN7
+        private string _Cn7_P60;
+        public string Cn7_P60 { get { return _Cn7_P60; } set { SetProperty(ref _Cn7_P60, value); } }
+
+        private Brush _ColCn7_P60;
+        public Brush ColCn7_P60 { get { return _ColCn7_P60; } set { SetProperty(ref _ColCn7_P60, value); } }
+
+        private string _Cn7_P20;
+        public string Cn7_P20 { get { return _Cn7_P20; } set { SetProperty(ref _Cn7_P20, value); } }
+
+        private Brush _ColCn7_P20;
+        public Brush ColCn7_P20 { get { return _ColCn7_P20; } set { SetProperty(ref _ColCn7_P20, value); } }
+
+        private string _Cn7_M20;
+        public string Cn7_M20 { get { return _Cn7_M20; } set { SetProperty(ref _Cn7_M20, value); } }
+
+        private Brush _ColCn7_M20;
+        public Brush ColCn7_M20 { get { return _ColCn7_M20; } set { SetProperty(ref _ColCn7_M20, value); } }
+
+
+        //アナログ検査 CN8
+        private string _Cn8_P60;
+        public string Cn8_P60 { get { return _Cn8_P60; } set { SetProperty(ref _Cn8_P60, value); } }
+
+        private Brush _ColCn8_P60;
+        public Brush ColCn8_P60 { get { return _ColCn8_P60; } set { SetProperty(ref _ColCn8_P60, value); } }
+
+        private string _Cn8_P20;
+        public string Cn8_P20 { get { return _Cn8_P20; } set { SetProperty(ref _Cn8_P20, value); } }
+
+        private Brush _ColCn8_P20;
+        public Brush ColCn8_P20 { get { return _ColCn8_P20; } set { SetProperty(ref _ColCn8_P20, value); } }
+
+        private string _Cn8_M20;
+        public string Cn8_M20 { get { return _Cn8_M20; } set { SetProperty(ref _Cn8_M20, value); } }
+
+        private Brush _ColCn8_M20;
+        public Brush ColCn8_M20 { get { return _ColCn8_M20; } set { SetProperty(ref _ColCn8_M20, value); } }
+
+
+        //アナログ検査 CN9
+        private string _Cn9_P60;
+        public string Cn9_P60 { get { return _Cn9_P60; } set { SetProperty(ref _Cn9_P60, value); } }
+
+        private Brush _ColCn9_P60;
+        public Brush ColCn9_P60 { get { return _ColCn9_P60; } set { SetProperty(ref _ColCn9_P60, value); } }
+
+        private string _Cn9_P20;
+        public string Cn9_P20 { get { return _Cn9_P20; } set { SetProperty(ref _Cn9_P20, value); } }
+
+        private Brush _ColCn9_P20;
+        public Brush ColCn9_P20 { get { return _ColCn9_P20; } set { SetProperty(ref _ColCn9_P20, value); } }
+
+        private string _Cn9_M20;
+        public string Cn9_M20 { get { return _Cn9_M20; } set { SetProperty(ref _Cn9_M20, value); } }
+
+        private Brush _ColCn9_M20;
+        public Brush ColCn9_M20 { get { return _ColCn9_M20; } set { SetProperty(ref _ColCn9_M20, value); } }
+
+
+        //アナログ検査 CN10
+        private string _Cn10_P60;
+        public string Cn10_P60 { get { return _Cn10_P60; } set { SetProperty(ref _Cn10_P60, value); } }
+
+        private Brush _ColCn10_P60;
+        public Brush ColCn10_P60 { get { return _ColCn10_P60; } set { SetProperty(ref _ColCn10_P60, value); } }
+
+        private string _Cn10_P20;
+        public string Cn10_P20 { get { return _Cn10_P20; } set { SetProperty(ref _Cn10_P20, value); } }
+
+        private Brush _ColCn10_P20;
+        public Brush ColCn10_P20 { get { return _ColCn10_P20; } set { SetProperty(ref _ColCn10_P20, value); } }
+
+        private string _Cn10_M20;
+        public string Cn10_M20 { get { return _Cn10_M20; } set { SetProperty(ref _Cn10_M20, value); } }
+
+        private Brush _ColCn10_M20;
+        public Brush ColCn10_M20 { get { return _ColCn10_M20; } set { SetProperty(ref _ColCn10_M20, value); } }
+
+        //圧力入力 入力電圧
+        private string _Cn11_Vol1;
+        public string Cn11_Vol1 { get { return _Cn11_Vol1; } set { SetProperty(ref _Cn11_Vol1, value); } }
+
+        private Brush _ColCn11_Vol1;
+        public Brush ColCn11_Vol1 { get { return _ColCn11_Vol1; } set { SetProperty(ref _ColCn11_Vol1, value); } }
+
+        private string _Cn11_Vol2;
+        public string Cn11_Vol2 { get { return _Cn11_Vol2; } set { SetProperty(ref _Cn11_Vol2, value); } }
+
+        private Brush _ColCn11_Vol2;
+        public Brush ColCn11_Vol2 { get { return _ColCn11_Vol2; } set { SetProperty(ref _ColCn11_Vol2, value); } }
+
+        private string _Cn12_Vol1;
+        public string Cn12_Vol1 { get { return _Cn12_Vol1; } set { SetProperty(ref _Cn12_Vol1, value); } }
+
+        private Brush _ColCn12_Vol1;
+        public Brush ColCn12_Vol1 { get { return _ColCn12_Vol1; } set { SetProperty(ref _ColCn12_Vol1, value); } }
+
+        private string _Cn12_Vol2;
+        public string Cn12_Vol2 { get { return _Cn12_Vol2; } set { SetProperty(ref _Cn12_Vol2, value); } }
+
+        private Brush _ColCn12_Vol2;
+        public Brush ColCn12_Vol2 { get { return _ColCn12_Vol2; } set { SetProperty(ref _ColCn12_Vol2, value); } }
+
+        //圧力入力 認識圧力値
+        private string _Cn11_In1;
+        public string Cn11_In1 { get { return _Cn11_In1; } set { SetProperty(ref _Cn11_In1, value); } }
+
+        private Brush _ColCn11_In1;
+        public Brush ColCn11_In1 { get { return _ColCn11_In1; } set { SetProperty(ref _ColCn11_In1, value); } }
+
+        private string _Cn11_In2;
+        public string Cn11_In2 { get { return _Cn11_In2; } set { SetProperty(ref _Cn11_In2, value); } }
+
+        private Brush _ColCn11_In2;
+        public Brush ColCn11_In2 { get { return _ColCn11_In2; } set { SetProperty(ref _ColCn11_In2, value); } }
+
+        private string _Cn12_In1;
+        public string Cn12_In1 { get { return _Cn12_In1; } set { SetProperty(ref _Cn12_In1, value); } }
+
+        private Brush _ColCn12_In1;
+        public Brush ColCn12_In1 { get { return _ColCn12_In1; } set { SetProperty(ref _ColCn12_In1, value); } }
+
+        private string _Cn12_In2;
+        public string Cn12_In2 { get { return _Cn12_In2; } set { SetProperty(ref _Cn12_In2, value); } }
+
+        private Brush _ColCn12_In2;
+        public Brush ColCn12_In2 { get { return _ColCn12_In2; } set { SetProperty(ref _ColCn12_In2, value); } }
+
+
+
+
+
+
+
+
+        //PT100
+        private string _Non_Cal_100;
+        public string Non_Cal_100 { get { return _Non_Cal_100; } set { SetProperty(ref _Non_Cal_100, value); } }
+
+        private Brush _ColNon_Cal_100;
+        public Brush ColNon_Cal_100 { get { return _ColNon_Cal_100; } set { SetProperty(ref _ColNon_Cal_100, value); } }
+
+        private string _Non_Cal_130;
+        public string Non_Cal_130 { get { return _Non_Cal_130; } set { SetProperty(ref _Non_Cal_130, value); } }
+
+        private Brush _ColNon_Cal_130;
+        public Brush ColNon_Cal_130 { get { return _ColNon_Cal_130; } set { SetProperty(ref _ColNon_Cal_130, value); } }
+
+
+        //PT100
+        private string _Cal_100;
+        public string Cal_100 { get { return _Cal_100; } set { SetProperty(ref _Cal_100, value); } }
+
+        private Brush _ColCal_100;
+        public Brush ColCal_100 { get { return _ColCal_100; } set { SetProperty(ref _ColCal_100, value); } }
+
+        private string _Cal_130;
+        public string Cal_130 { get { return _Cal_130; } set { SetProperty(ref _Cal_130, value); } }
+
+        private Brush _ColCal_130;
+        public Brush ColCal_130 { get { return _ColCal_130; } set { SetProperty(ref _ColCal_130, value); } }
+
+
+
+
+
+
+
 
 
 
@@ -128,7 +374,7 @@ namespace New91820060Tester
         private Brush _ExpU9_8;
         public Brush ExpU9_8 { get { return _ExpU9_8; } set { SetProperty(ref _ExpU9_8, value); } }
 
-    /// ///////
+        /// ///////
         private Brush _ExpU10_1;
         public Brush ExpU10_1 { get { return _ExpU10_1; } set { SetProperty(ref _ExpU10_1, value); } }
 
@@ -163,7 +409,7 @@ namespace New91820060Tester
         private Brush _ExpQ3;
         public Brush ExpQ3 { get { return _ExpQ3; } set { SetProperty(ref _ExpQ3, value); } }
 
-       
+
         private Brush _ExpU11_3;
         public Brush ExpU11_3 { get { return _ExpU11_3; } set { SetProperty(ref _ExpU11_3, value); } }
 
@@ -331,7 +577,7 @@ namespace New91820060Tester
         private Brush _OutU9_8;
         public Brush OutU9_8 { get { return _OutU9_8; } set { SetProperty(ref _OutU9_8, value); } }
 
-    /// ///////
+        /// ///////
         private Brush _OutU10_1;
         public Brush OutU10_1 { get { return _OutU10_1; } set { SetProperty(ref _OutU10_1, value); } }
 
@@ -366,7 +612,7 @@ namespace New91820060Tester
         private Brush _OutQ3;
         public Brush OutQ3 { get { return _OutQ3; } set { SetProperty(ref _OutQ3, value); } }
 
-       
+
         private Brush _OutU11_3;
         public Brush OutU11_3 { get { return _OutU11_3; } set { SetProperty(ref _OutU11_3, value); } }
 
@@ -507,6 +753,141 @@ namespace New91820060Tester
 
         private Brush _OutU215d;
         public Brush OutU215d { get { return _OutU215d; } set { SetProperty(ref _OutU215d, value); } }
+
+        //デジタル入力 期待値
+        private Brush _ExpU21e;
+        public Brush ExpU21e { get { return _ExpU21e; } set { SetProperty(ref _ExpU21e, value); } }
+
+        private Brush _ExpU21f;
+        public Brush ExpU21f { get { return _ExpU21f; } set { SetProperty(ref _ExpU21f, value); } }
+
+        //
+        private Brush _ExpU22a;
+        public Brush ExpU22a { get { return _ExpU22a; } set { SetProperty(ref _ExpU22a, value); } }
+
+        private Brush _ExpU22b;
+        public Brush ExpU22b { get { return _ExpU22b; } set { SetProperty(ref _ExpU22b, value); } }
+
+        private Brush _ExpU22c;
+        public Brush ExpU22c { get { return _ExpU22c; } set { SetProperty(ref _ExpU22c, value); } }
+
+        private Brush _ExpU22d;
+        public Brush ExpU22d { get { return _ExpU22d; } set { SetProperty(ref _ExpU22d, value); } }
+
+        private Brush _ExpU22e;
+        public Brush ExpU22e { get { return _ExpU22e; } set { SetProperty(ref _ExpU22e, value); } }
+
+        private Brush _ExpU22f;
+        public Brush ExpU22f { get { return _ExpU22f; } set { SetProperty(ref _ExpU22f, value); } }
+
+        //
+        private Brush _ExpU23a;
+        public Brush ExpU23a { get { return _ExpU23a; } set { SetProperty(ref _ExpU23a, value); } }
+
+        private Brush _ExpU23b;
+        public Brush ExpU23b { get { return _ExpU23b; } set { SetProperty(ref _ExpU23b, value); } }
+
+        private Brush _ExpU23c;
+        public Brush ExpU23c { get { return _ExpU23c; } set { SetProperty(ref _ExpU23c, value); } }
+
+        private Brush _ExpU23d;
+        public Brush ExpU23d { get { return _ExpU23d; } set { SetProperty(ref _ExpU23d, value); } }
+
+        private Brush _ExpU23e;
+        public Brush ExpU23e { get { return _ExpU23e; } set { SetProperty(ref _ExpU23e, value); } }
+
+        private Brush _ExpU23f;
+        public Brush ExpU23f { get { return _ExpU23f; } set { SetProperty(ref _ExpU23f, value); } }
+
+        //
+        private Brush _ExpPC1;
+        public Brush ExpPC1 { get { return _ExpPC1; } set { SetProperty(ref _ExpPC1, value); } }
+
+        private Brush _ExpPC2;
+        public Brush ExpPC2 { get { return _ExpPC2; } set { SetProperty(ref _ExpPC2, value); } }
+
+        private Brush _ExpPC3;
+        public Brush ExpPC3 { get { return _ExpPC3; } set { SetProperty(ref _ExpPC3, value); } }
+
+        private Brush _ExpPC4;
+        public Brush ExpPC4 { get { return _ExpPC4; } set { SetProperty(ref _ExpPC4, value); } }
+
+        private Brush _ExpPC5;
+        public Brush ExpPC5 { get { return _ExpPC5; } set { SetProperty(ref _ExpPC5, value); } }
+
+        private Brush _ExpPC6;
+        public Brush ExpPC6 { get { return _ExpPC6; } set { SetProperty(ref _ExpPC6, value); } }
+
+        private Brush _ExpPC7;
+        public Brush ExpPC7 { get { return _ExpPC7; } set { SetProperty(ref _ExpPC7, value); } }
+
+
+        //デジタル入力 認識値
+        private Brush _InputU21e;
+        public Brush InputU21e { get { return _InputU21e; } set { SetProperty(ref _InputU21e, value); } }
+
+        private Brush _InputU21f;
+        public Brush InputU21f { get { return _InputU21f; } set { SetProperty(ref _InputU21f, value); } }
+
+        //
+        private Brush _InputU22a;
+        public Brush InputU22a { get { return _InputU22a; } set { SetProperty(ref _InputU22a, value); } }
+
+        private Brush _InputU22b;
+        public Brush InputU22b { get { return _InputU22b; } set { SetProperty(ref _InputU22b, value); } }
+
+        private Brush _InputU22c;
+        public Brush InputU22c { get { return _InputU22c; } set { SetProperty(ref _InputU22c, value); } }
+
+        private Brush _InputU22d;
+        public Brush InputU22d { get { return _InputU22d; } set { SetProperty(ref _InputU22d, value); } }
+
+        private Brush _InputU22e;
+        public Brush InputU22e { get { return _InputU22e; } set { SetProperty(ref _InputU22e, value); } }
+
+        private Brush _InputU22f;
+        public Brush InputU22f { get { return _InputU22f; } set { SetProperty(ref _InputU22f, value); } }
+
+        //
+        private Brush _InputU23a;
+        public Brush InputU23a { get { return _InputU23a; } set { SetProperty(ref _InputU23a, value); } }
+
+        private Brush _InputU23b;
+        public Brush InputU23b { get { return _InputU23b; } set { SetProperty(ref _InputU23b, value); } }
+
+        private Brush _InputU23c;
+        public Brush InputU23c { get { return _InputU23c; } set { SetProperty(ref _InputU23c, value); } }
+
+        private Brush _InputU23d;
+        public Brush InputU23d { get { return _InputU23d; } set { SetProperty(ref _InputU23d, value); } }
+
+        private Brush _InputU23e;
+        public Brush InputU23e { get { return _InputU23e; } set { SetProperty(ref _InputU23e, value); } }
+
+        private Brush _InputU23f;
+        public Brush InputU23f { get { return _InputU23f; } set { SetProperty(ref _InputU23f, value); } }
+
+        //
+        private Brush _InputPC1;
+        public Brush InputPC1 { get { return _InputPC1; } set { SetProperty(ref _InputPC1, value); } }
+
+        private Brush _InputPC2;
+        public Brush InputPC2 { get { return _InputPC2; } set { SetProperty(ref _InputPC2, value); } }
+
+        private Brush _InputPC3;
+        public Brush InputPC3 { get { return _InputPC3; } set { SetProperty(ref _InputPC3, value); } }
+
+        private Brush _InputPC4;
+        public Brush InputPC4 { get { return _InputPC4; } set { SetProperty(ref _InputPC4, value); } }
+
+        private Brush _InputPC5;
+        public Brush InputPC5 { get { return _InputPC5; } set { SetProperty(ref _InputPC5, value); } }
+
+        private Brush _InputPC6;
+        public Brush InputPC6 { get { return _InputPC6; } set { SetProperty(ref _InputPC6, value); } }
+
+        private Brush _InputPC7;
+        public Brush InputPC7 { get { return _InputPC7; } set { SetProperty(ref _InputPC7, value); } }
 
 
 

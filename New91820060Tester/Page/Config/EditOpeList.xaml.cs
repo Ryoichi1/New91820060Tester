@@ -51,7 +51,7 @@ namespace New91820060Tester
             buttonSave.Background = Brushes.DodgerBlue;
             //保存する処理
             State.VmMainWindow.ListOperator = new List<string>(vmEdit.ListOperator);
-            General.PlaySound(General.soundSuccess);
+            General.PlaySoundAsync(General.soundSuccess);
             await Task.Delay(150);
             buttonSave.Background = Brushes.Transparent;
             //App._navi.Refresh();

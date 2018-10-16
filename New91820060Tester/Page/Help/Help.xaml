@@ -6,9 +6,9 @@
 	x:Name="Page"
 	WindowTitle="Page"
 	FlowDirection="LeftToRight"
-	Width="1250" Height="890">
+	Width="1250" Height="782.354">
 
-    <Canvas x:Name="LayoutRoot">
+    <Canvas x:Name="LayoutRoot" Margin="0,0,0,52">
 
         <Canvas.Resources>
             <Style TargetType="Label">
@@ -49,7 +49,7 @@
                 <Frame x:Name="FrameVerInfo" FlowDirection="LeftToRight" Margin="322,-24,159,367"/>
             </TabItem>
             <TabItem x:Name="TabManual" Header="取扱説明書" Margin="999,64,-999,-64" Width="108" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="TabManual_Loaded" Controls:ControlsHelper.HeaderFontSize="18">
-                <Frame x:Name="FrameManual" FlowDirection="LeftToRight" Margin="49,-25,159,164"/>
+                <Frame x:Name="FrameManual" FlowDirection="LeftToRight" Margin="-11,-25,159,116"/>
             </TabItem>
         </TabControl>
         <Border VerticalAlignment="Stretch" Height="432" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Right" Canvas.Left="154" Canvas.Top="10"/>

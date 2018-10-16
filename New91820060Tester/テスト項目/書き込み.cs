@@ -23,6 +23,7 @@ namespace New91820060Tester
             {
                 General.ResetIo();
                 Target.InitPort232();
+                Target.ChangeMode(Target.MODE.RS232);
             }
         }
 

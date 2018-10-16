@@ -90,7 +90,18 @@ namespace New91820060Tester
 
 
                         dis.BeginInvoke(StopButtonBlinkOn);
-                        State.VmTestStatus.Message = Constants.MessSet;
+
+                        if (Flags.State日常点検)
+                        {
+                            State.VmTestStatus.Message = Constants.MessSet;
+                            Flags.日常点検中 = false;//通常試験モード
+                        }
+                        else
+                        {
+                            State.VmTestStatus.Message = Constants.MessDailyCheck;
+                            Flags.日常点検中 = true;//日常点検モード
+                        }
+
                         Flags.EnableTestStart = true;
                         Flags.Click確認Button = false;
 
@@ -113,10 +124,22 @@ namespace New91820060Tester
 
                 });
 
-                State.VmMainWindow.Flyout = false;
                 if (Flags.OtherPage)//待機中に他のページに遷移したらメソッドを抜ける
                 {
                     return;
+                }
+
+                //プレスのレバーが下がっているかの確認
+                if (!General.CheckPress())
+                {
+                    MessageBox.Show("プレスのレバーをさげてください");
+                    continue;
+                }
+                //非常停止スイッチが解除されているかの確認
+                if (!General.CheckEmergencyReset())
+                {
+                    MessageBox.Show("非常停止スイッチを解除してください");
+                    continue;
                 }
 
                 State.VmMainWindow.EnableOtherButton = false;
@@ -187,7 +210,14 @@ namespace New91820060Tester
             }
             else
             {
-                テスト項目最新 = State.テスト項目;
+                if (Flags.日常点検中)
+                {
+                    テスト項目最新 = State.テスト日常点検;
+                }
+                else
+                {
+                    テスト項目最新 = State.テスト項目;
+                }
             }
 
 
@@ -213,7 +243,7 @@ namespace New91820060Tester
                         if (!Flags.PowOn)
                         {
                             PowSupply(true);
-                            await Task.Delay(1000);
+                            await Task.Delay(2000);
                         }
                     }
                     else
@@ -237,24 +267,126 @@ namespace New91820060Tester
                             if (await 書き込み.WriteFw(Constants.FolderPath_TestFw)) break;
                             goto case 5000;
 
-                        case 400://デジタル出力チェック
+                        case 400://P65 ADチェック
+                            if (await P65ADチェック.CheckP65()) break;
+                            goto case 5000;
+
+                        case 500://デジタル出力チェック
                             if (await デジタル出力チェック.CheckDout()) break;
                             goto case 5000;
 
-                        case 600://DA OUT CN116 50
+                        case 600://デジタル入力チェック
+                            if (await デジタル入力チェック.CheckDin()) break;
+                            goto case 5000;
+
+                        case 700://DA OUT CN116 50
                             if (await TestDaOut.CheckDaOut(TestDaOut.DA_OUT_CH.CN116, TestDaOut.DA_OUT_VAL._50)) break;
                             goto case 5000;
-                        case 601://DA OUT CN116 100
+                        case 701://DA OUT CN116 100
                             if (await TestDaOut.CheckDaOut(TestDaOut.DA_OUT_CH.CN116, TestDaOut.DA_OUT_VAL._100)) break;
                             goto case 5000;
+                        case 702://DA OUT CN117 50
+                            if (await TestDaOut.CheckDaOut(TestDaOut.DA_OUT_CH.CN117, TestDaOut.DA_OUT_VAL._50)) break;
+                            goto case 5000;
+                        case 703://DA OUT CN117 100
+                            if (await TestDaOut.CheckDaOut(TestDaOut.DA_OUT_CH.CN117, TestDaOut.DA_OUT_VAL._100)) break;
+                            goto case 5000;
 
+                        case 800://サーミスタ入力チェック +60℃
+                            if (await サーミスタ入力チェック.CheckTh(サーミスタ入力チェック.TEMP.P60)) break;
+                            goto case 5000;
+                        case 801://サーミスタ入力チェック +60℃
+                            if (await サーミスタ入力チェック.CheckTh(サーミスタ入力チェック.TEMP.P20)) break;
+                            goto case 5000;
+                        case 802://サーミスタ入力チェック +60℃
+                            if (await サーミスタ入力チェック.CheckTh(サーミスタ入力チェック.TEMP.M20)) break;
+                            goto case 5000;
 
-                        case 2000://製品ソフト書き込み
+                        case 900://圧力入力1
+                            if (await 圧力入力チェック.GetLev(圧力入力チェック.CH.CN11, 圧力入力チェック.PRESS.V1_5)) break;
+                            goto case 5000;
+                        case 901://圧力入力1
+                            if (await 圧力入力チェック.GetLev(圧力入力チェック.CH.CN11, 圧力入力チェック.PRESS.V3_5)) break;
+                            goto case 5000;
+                        case 902://圧力入力1
+                            if (await 圧力入力チェック.GetLev(圧力入力チェック.CH.CN12, 圧力入力チェック.PRESS.V1_5)) break;
+                            goto case 5000;
+                        case 903://圧力入力1
+                            if (await 圧力入力チェック.GetLev(圧力入力チェック.CH.CN12, 圧力入力チェック.PRESS.V3_5)) break;
+                            goto case 5000;
+                        case 904://圧力入力1
+                            if (await 圧力入力チェック.CheckPress(圧力入力チェック.PRESS.V1_5)) break;
+                            goto case 5000;
+                        case 905://圧力入力2
+                            if (await 圧力入力チェック.CheckPress(圧力入力チェック.PRESS.V3_5)) break;
+                            goto case 5000;
+
+                        case 1000://EEP_ROMテスト
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            await Task.Delay(500);
+                            if (await EEPROMチェック.TestEep()) break;
+                            goto case 5000;
+                        case 1001://出荷設定書き込み
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await EEPROMチェック.WriteFactorySetting()) break;
+                            goto case 5000;
+                        case 1002://出荷設定チェック
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await EEPROMチェック.CheckFactorySetting()) break;
+                            goto case 5000;
+
+                        case 1100://DSW1チェック
+                            if (await スイッチ入力チェック.CheckDsw1()) break;
+                            goto case 5000;
+
+                        case 1200://DSW2チェック
+                            if (await スイッチ入力チェック.CheckDsw2()) break;
+                            goto case 5000;
+
+                        case 1300://PT100調整 100Ω
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await PT100チェック.CalPt100(PT100チェック.TH._100)) break;
+                            goto case 5000;
+                        case 1301://PT100調整 130Ω
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await PT100チェック.CalPt100(PT100チェック.TH._130)) break;
+                            goto case 5000;
+
+                        case 1400://補正値 EEPROMへの書き込み
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await PT100チェック.WriteAdjustmentToEep()) break;
+                            goto case 5000;
+                        case 1401://補正値 読み出してアプリ側で記録している値と同じか比較する T_C 100
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await PT100チェック.CompareAdjustment(PT100チェック.TH._100)) break;
+                            goto case 5000;
+                        case 1402://補正値 読み出してアプリ側で記録している値を同じがチェックする T_C 130
+                            if (State.VmTestStatus.CheckTestQk == true) break;
+
+                            if (await PT100チェック.CompareAdjustment(PT100チェック.TH._130)) break;
+                            goto case 5000;
+
+                        case 1500://PT100チェック 130Ω ※130Ω → 100Ωの方が抵抗を切り替える回数が減る！
+                            if (await PT100チェック.CheckPt100(PT100チェック.TH._130)) break;
+                            goto case 5000;
+                        case 1501://PT100チェック 100Ω
+                            if (await PT100チェック.CheckPt100(PT100チェック.TH._100)) break;
+                            goto case 5000;
+
+                        case 1600://製品ソフト書き込み
                             if (await 書き込み.WriteFw(State.ProductFwPath)) break;
                             goto case 5000;
 
 
                         case 5000://NGだっときの処理
+                            Flags.Retry = true;
                             if (Flags.AddDecision) SetTestLog("---- FAIL\r\n");
                             FailStepNo = d.s.Key;
                             FailTitle = d.s.Value;
@@ -269,7 +401,6 @@ namespace New91820060Tester
                             if (RetryCnt++ != Constants.RetryCount)
                             {
                                 //リトライ履歴リスト更新
-                                Flags.Retry = true;
                                 goto Retry;
                             }
 
@@ -325,26 +456,35 @@ namespace New91820060Tester
                 await Task.Delay(500);
                 State.VmTestStatus.Message = Constants.MessRemove;
 
-                //強制停止ボタンの設定
-                //await General.ShowStopButton(false);
-
-                //通しで試験が合格したときの処理です(検査データを保存して、シリアルナンバーをインクリメントする)
-                if (State.VmTestStatus.CheckUnitTest != true) //null or False アプリ立ち上げ時はnullになっている！
+                if (Flags.日常点検中)
                 {
-                    //if (!General.SaveTestData())
-                    //{
-                    //    FailStepNo = 5000;
-                    //    FailTitle = "検査データ保存";
-                    //    goto FAIL_DATA_SAVE;
-                    //}
-
-                    //await General.StampOn();//合格印押し
-
-                    //当日試験合格数をインクリメント ビューモデルはまだ更新しない
-                    State.Setting.TodayOkCount++;
+                    if (State.VmTestStatus.CheckUnitTest != true) //null or False アプリ立ち上げ時はnullになっている！
+                    {
+                        using (var file = new System.IO.StreamWriter(Constants.Path_日常点検データ, true, System.Text.Encoding.GetEncoding("Shift_JIS")))
+                        {
+                            file.WriteLine(System.DateTime.Now.ToString("yyyy/MM/dd/ HH:mm:ss"));
+                        }
+                        Flags.State日常点検 = true;
+                    }
                 }
+                else
+                {
+                    //通しで試験が合格したときの処理です(検査データを保存して、シリアルナンバーをインクリメントする)
+                    if (State.VmTestStatus.CheckUnitTest != true) //null or False アプリ立ち上げ時はnullになっている！
+                    {
+                        if (!General.SaveTestData())
+                        {
+                            FailStepNo = 5000;
+                            FailTitle = "検査データ保存";
+                            goto FAIL_DATA_SAVE;
+                        }
 
+                        await General.PushStamp();//合格印押し
 
+                        //当日試験合格数をインクリメント ビューモデルはまだ更新しない
+                        State.Setting.TodayOkCount++;
+                    }
+                }
 
                 FlagTestTime = false;
                 State.VmTestStatus.StartButtonContent = Constants.確認;
@@ -359,7 +499,7 @@ namespace New91820060Tester
                 SetDecision();
                 SbPass();
 
-                PlaySound(soundPass);
+                PlaySoundAsync(soundPassLong);
 
                 Flags.Click確認Button = false;
                 StopButtonBlinkOn();
@@ -417,7 +557,7 @@ namespace New91820060Tester
                 SetErrInfo();
                 SbFail();
 
-                General.PlaySound(General.soundFail);
+                General.PlaySoundAsync(General.soundFail);
 
                 Flags.Click確認Button = false;
                 StopButtonBlinkOn();
@@ -444,6 +584,8 @@ namespace New91820060Tester
             }
             finally
             {
+                CheckSafetyG7sa();//
+
                 ResetIo();
                 SbRingLoad();
 

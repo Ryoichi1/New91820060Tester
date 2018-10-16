@@ -40,7 +40,7 @@
         <Image x:Name="Pic5" Canvas.Left="595" Canvas.Top="44" Width="133" Cursor="Hand" Height="75" PreviewMouseLeftButtonDown="Pic5_PreviewMouseLeftButtonDown">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="128"
-                    UriSource="/Resources/Pic/X.jpg"/>
+                    UriSource="/Resources/Pic/taki.jpg"/>
             </Image.Source>
         </Image>
 

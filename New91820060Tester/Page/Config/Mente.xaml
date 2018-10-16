@@ -44,11 +44,10 @@
             </Canvas.Background>
             <Button x:Name="buttonPow" Content="電源"  Height="40" Canvas.Left="10" Canvas.Top="9" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonPow_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
             <Button x:Name="buttonComDisconnect" Content="ターゲット通信切断"  Height="40" Canvas.Left="150" Canvas.Top="9" Width="137" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonComDisconnect_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
-            <Button x:Name="buttonWriteTestFw" Content="テストFW書き込み"  Height="40" Canvas.Left="10" Canvas.Top="65" Width="137" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}" Click="buttonWriteTestFw_Click"/>
-            <Button x:Name="buttonStamp" Content="合格印"  Height="40" Canvas.Left="164" Canvas.Top="65" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonStamp_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
-            <Button x:Name="buttonSafetyRelay" Content="安全リレー"  Height="40" Canvas.Left="300" Canvas.Top="9" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSafetyRelay_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <Button x:Name="buttonStamp" Content="合格印"  Height="40" Canvas.Left="10" Canvas.Top="66" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonStamp_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
+            <Button x:Name="buttonSafetyRelay" Content="安全リレー"  Height="40" Canvas.Left="150" Canvas.Top="66" Width="110" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSafetyRelay_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
         </Canvas>
-        <Canvas Height="135" Canvas.Left="11" Canvas.Top="158" Width="230">
+        <Canvas Height="135" Canvas.Left="11" Canvas.Top="156" Width="230">
             <Canvas.Background>
                 <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
             </Canvas.Background>
@@ -131,18 +130,6 @@
             <RadioButton x:Name="rbRs232c" Content="RS232C" Height="25" Canvas.Left="322" Canvas.Top="37" Width="107" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbRs232c_Checked"/>
             <RadioButton x:Name="rbRs422" Content="RS422" Height="25" Canvas.Left="434" Canvas.Top="37" Width="111" Background="#FF9EC9D8" FontSize="20" FontFamily="Segoe UI Light" Checked="rbRs422_Checked"/>
             <TextBox x:Name="tbCommand" Height="29" Canvas.Left="132" TextWrapping="Wrap" Text="TextBox" Canvas.Top="36" Width="158" Background="{x:Null}" FontFamily="Segoe UI Light" FontSize="16"/>
-        </Canvas>
-        <Canvas Height="42" Canvas.Left="253" Canvas.Top="162" Width="309">
-            <Canvas.Background>
-                <SolidColorBrush Color="#FF44BDEC" Opacity="0.2"/>
-            </Canvas.Background>
-            <Button x:Name="buttonMeasVol" Content="電圧計測"  Height="24" Canvas.Left="10" Canvas.Top="10" Width="80" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonMeasVol_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
-            <TextBlock x:Name="tbVol" Height="24" Canvas.Left="209" Canvas.Top="10" Width="90" FontSize="18" Padding="5,0,0,0" TextWrapping="Wrap" Foreground="White">
-                <TextBlock.Background>
-                    <SolidColorBrush Color="#FF08A2F9" Opacity="0.3"/>
-                </TextBlock.Background>
-            </TextBlock>
-            <Button x:Name="buttonMeasVol_Copy" Content="電圧計測"  Height="24" Canvas.Left="95" Canvas.Top="10" Width="80" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonMeasVol_Copy_Click" RenderTransformOrigin="0.5,0.5" Padding="0" ScrollViewer.CanContentScroll="True" BorderThickness="1" Background="{x:Null}"/>
         </Canvas>
 
     </Canvas>

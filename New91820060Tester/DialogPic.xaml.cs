@@ -11,12 +11,12 @@ namespace New91820060Tester
     /// </summary>
     public partial class DialogPic
     {
-        public enum NAME { ブレーカ, その他 }
+        public enum PT_NAME { PT100, PT130 }
 
-        NAME testName;
+        PT_NAME ptName;
         string PicName = "";
 
-        public DialogPic(string mess, NAME name)
+        public DialogPic(string mess, PT_NAME ptName)
         {
             InitializeComponent();
 
@@ -24,19 +24,10 @@ namespace New91820060Tester
 
             this.DataContext = State.VmTestStatus;
             labelMessage.Content = mess;
-            testName = name;
-
-            switch (testName)
-            {
-                case NAME.ブレーカ:
-                    PicName = "breaker.jpg";
-                    break;
-                case NAME.その他:
-                    PicName = "non2.png";
-                    break;
-            }
-
+            PicName = "non2.png";
+            this.ptName = ptName;
         }
+
 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +43,8 @@ namespace New91820060Tester
 
         private void metroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            General.PlaySound(General.soundNotice);
+            General.PlaySoundSync(General.soundNotice);
+            General.PlaySoundAsync(ptName == PT_NAME.PT100? General.soundPt100 : General.soundPt130);
             ButtonOk.Focus();
             imagePic.Source = new BitmapImage(new Uri("Resources/Pic/" + PicName, UriKind.Relative));
         }

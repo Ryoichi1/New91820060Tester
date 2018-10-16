@@ -124,7 +124,7 @@ namespace New91820060Tester
         //**************************************************************************
         //ターゲットにコマンドを送る
         //**************************************************************************
-        public static bool SendData(string Data, int Wait = 3000, bool setLog = true, bool DoAnalysis = true)
+        public static bool SendData(string Data, int Wait = 3000, bool setLog = true, bool DoAnalysis = true, int Wait2 = 100)
         {
             var selectedPort = new SerialPort();
             selectedPort = CurrentMode == MODE.RS232 ? port232 : port422;
@@ -167,7 +167,7 @@ namespace New91820060Tester
             }
             finally
             {
-                Thread.Sleep(100);
+                Thread.Sleep(Wait2);
             }
         }
 

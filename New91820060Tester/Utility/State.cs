@@ -33,9 +33,18 @@ namespace New91820060Tester
         public static Configuration Setting { get; set; }
         public static TestSpec TestSpec { get; set; }
 
-        public static List<FirmwareInfo> ItemInfoLists { get; set; }
+        public static List<ProductInfo> ItemInfoLists { get; set; }
 
+        /// <summary>
+        //立ち上げ時のアイテム選択により下記のフィールドを変更する
+        /// </summary>
         public static string ProductFwPath { get; set; }
+        public static int Dsw1DefaultVal  { get; set; }
+        public static string PathForTestData  { get; set; }
+        public static string Dsw1DefaultMess  { get; set; }
+        public static int Dsw2DefaultVal { get; set; }
+        public static string Dsw2DefaultMess { get; set; }
+        /// ////////////////////////////////////////////////////////////////
 
         public static string CurrDir { get; set; }
 
@@ -45,6 +54,8 @@ namespace New91820060Tester
 
         public static Uri uriOtherInfoPage { get; set; }
 
+        public static int T_C_100 { get; set; }
+        public static int T_D_130 { get; set; }
 
         public static List<TestSpecs> テスト項目 = new List<TestSpecs>()
         {
@@ -54,15 +65,56 @@ namespace New91820060Tester
 
             new TestSpecs(300, "検査ソフト書き込み", false),
 
-            new TestSpecs(400, "デジタル出力チェック", true),
+            new TestSpecs(400, "P65 ADチェック", false),
 
-            new TestSpecs(500, "デジタル入力チェック", true),
+            new TestSpecs(500, "デジタル出力チェック", true),
 
-            new TestSpecs(600, "DA_OUT CN116 50", true),
-            //new TestSpecs(301, "DA_OUT CN116 100", false),
+            new TestSpecs(600, "デジタル入力チェック", true),
 
-            new TestSpecs(1000, "製品プログラム書き込み", false),
+            new TestSpecs(700, "DA_OUT CN116 50", true),
+            new TestSpecs(701, "DA_OUT CN116 100", true),
+            new TestSpecs(702, "DA_OUT CN117 50", true),
+            new TestSpecs(703, "DA_OUT CN117 100", true),
 
+            new TestSpecs(800, "サーミスタ入力チェック（+60℃）", true),
+            new TestSpecs(801, "サーミスタ入力チェック（+20℃）", true),
+            new TestSpecs(802, "サーミスタ入力チェック（-20℃）", true),
+
+            new TestSpecs(900, "圧力入力 CN11 1.5V調整", true),
+            new TestSpecs(901, "圧力入力 CN11 3.5V調整", true),
+            new TestSpecs(902, "圧力入力 CN12 1.5V調整", true),
+            new TestSpecs(903, "圧力入力 CN12 3.5V調整", true),
+            new TestSpecs(904, "圧力入力チェック1", true),
+            new TestSpecs(905, "圧力入力チェック2", true),
+
+            new TestSpecs(1000, "EEP_ROM テスト", true),//QK品の再試験はこの項目を検査しない
+            new TestSpecs(1001, "出荷設定書き込み", true),//QK品の再試験はこの項目を検査しない
+            new TestSpecs(1002, "出荷設定チェック", false),//QK品の再試験はこの項目を検査しない
+
+            new TestSpecs(1100, "DSW1チェック(RS422通信同時チェック)", true),
+
+            new TestSpecs(1200, "DSW2チェック", true),
+
+            new TestSpecs(1300, "PT100調整 100Ω", false),//QK品の再試験はこの項目を検査しない
+            new TestSpecs(1301, "PT100調整 130Ω", false),//QK品の再試験はこの項目を検査しない
+
+            new TestSpecs(1400, "補正値 書き込み", true),//QK品の再試験はこの項目を検査しない
+            new TestSpecs(1401, "補正値 読み出し T_C", true),//QK品の再試験はこの項目を検査しない
+            new TestSpecs(1402, "補正値 読み出し T_D", true),//QK品の再試験はこの項目を検査しない
+
+            new TestSpecs(1500, "PT100チェック 130Ω", false),
+            new TestSpecs(1501, "PT100チェック 100Ω", false),
+
+            new TestSpecs(1600, "製品プログラム書き込み", false),
+
+        };
+
+        public static List<TestSpecs> テスト日常点検 = new List<TestSpecs>()
+        {
+            new TestSpecs(200, "電源電圧チェック +5V", true),
+
+            new TestSpecs(1500, "PT100チェック 130Ω", false),
+            new TestSpecs(1501, "PT100チェック 100Ω", false),
         };
 
         //個別設定のロード
@@ -90,11 +142,11 @@ namespace New91820060Tester
             TestSpec = Deserialize<TestSpec>(Constants.filePath_TestSpec);
 
             //全アイテムのConfファイルのロード
-            ItemInfoLists = new List<FirmwareInfo>();
+            ItemInfoLists = new List<ProductInfo>();
             var confPathList = SearchConfFilePath();
             confPathList.ForEach(c =>
             {
-                ItemInfoLists.Add(Deserialize<FirmwareInfo>(c));
+                ItemInfoLists.Add(Deserialize<ProductInfo>(c));
             });
         }
 

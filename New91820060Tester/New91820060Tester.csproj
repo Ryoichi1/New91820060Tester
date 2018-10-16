@@ -168,13 +168,20 @@
     <Compile Include="ViewModel\ViewModelMainWindow.cs" />
     <Compile Include="ViewModel\ViewModelTestResult.cs" />
     <Compile Include="ViewModel\ViewModelTestStatus.cs" />
+    <Compile Include="テスト項目\EEP_ROMチェック.cs" />
     <Compile Include="テスト項目\TestDaOut.cs" />
     <Compile Include="テスト項目\MeasVoltage.cs" />
     <Compile Include="テスト項目\コネクタチェック.cs" />
+    <Compile Include="テスト項目\P65ADチェック.cs" />
+    <Compile Include="テスト項目\PT100チェック.cs" />
+    <Compile Include="テスト項目\スイッチ入力チェック.cs" />
+    <Compile Include="テスト項目\圧力入力チェック.cs" />
+    <Compile Include="テスト項目\サーミスタ入力チェック.cs" />
+    <Compile Include="テスト項目\デジタル入力チェック.cs" />
     <Compile Include="テスト項目\デジタル出力チェック.cs" />
     <Compile Include="テスト項目\書き込み.cs" />
     <Compile Include="検査規格\Configuration.cs" />
-    <Compile Include="検査規格\FirmwareInfo.cs" />
+    <Compile Include="検査規格\ProductInfo.cs" />
     <Compile Include="検査規格\TestSpec.cs" />
     <Page Include="DialogPic.xaml">
       <SubType>Designer</SubType>
@@ -274,6 +281,13 @@
     <Resource Include="Resources\Pic\baby5.jpg" />
     <Resource Include="Resources\Pic\X.jpg" />
     <Resource Include="Resources\Pic\91820060シルク図.jpg" />
+    <Resource Include="Resources\Pic\taki.jpg" />
+    <Content Include="Resources\Wav\PT100.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wav\PT130.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Wav\VictoryLong.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -10,6 +10,15 @@ namespace New91820060Tester
     public class ViewModelTestStatus : BindableBase
     {
 
+        private Brush _ColDailyCheck;
+        public Brush ColDailyCheck { get { return _ColDailyCheck; } set { SetProperty(ref _ColDailyCheck, value); } }
+
+        private Brush _ColPt62;
+        public Brush ColPt62 { get { return _ColPt62; } set { SetProperty(ref _ColPt62, value); } }
+
+        private Brush _ColPt82;
+        public Brush ColPt82 { get { return _ColPt82; } set { SetProperty(ref _ColPt82, value); } }
+
         //ファームウェア情報 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         private string _FwVer;
         public string FwVer
@@ -254,6 +263,14 @@ namespace New91820060Tester
             set { SetProperty(ref _CheckWriteTestFwPass, value); }
         }
 
+        //QK品の再試験チェックボックスがチェックされているかどうかの判定
+        private bool? _CheckTestQk = false;
+        public bool? CheckTestQk
+        {
+            get { return _CheckTestQk; }
+            set { SetProperty(ref _CheckTestQk, value); }
+        }
+
 
         //作業者へのメッセージ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         private string _Message;
@@ -315,6 +332,13 @@ namespace New91820060Tester
         {
             get { return _Color422; }
             set { SetProperty(ref _Color422, value); }
+        }
+
+        private Brush _ColorG7sa;
+        public Brush ColorG7sa
+        {
+            get { return _ColorG7sa; }
+            set { SetProperty(ref _ColorG7sa, value); }
         }
 
     }

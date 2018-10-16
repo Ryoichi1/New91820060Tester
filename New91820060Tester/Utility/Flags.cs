@@ -15,6 +15,8 @@ namespace New91820060Tester
 
         public static bool Ac200On { get; set; }
 
+        public static bool 日常点検中 { get; set; }//日常点検中はTrue、通常試験はFalse
+
         public static bool ShowErrInfo { get; set; }
         public static bool AddDecision { get; set; }
 
@@ -24,7 +26,8 @@ namespace New91820060Tester
         public static bool Click確認Button { get; set; }
         public static bool AllOk周辺機器接続 { get; set; }
 
-        public static bool SetAdapterForItem004 { get; set; } 
+        public static bool SetAdapterForItem004 { get; set; }
+        public static bool MustCheckQ3Out { get; set; }
 
         private static SolidColorBrush RetryPanelBrush = new SolidColorBrush();
         private static SolidColorBrush StatePanelOkBrush = new SolidColorBrush();
@@ -44,7 +47,30 @@ namespace New91820060Tester
         }
 
 
+        private static bool _State日常点検;
+        public static bool State日常点検
+        {
+            get { return _State日常点検; }
+            set
+            {
+                _State日常点検 = value;
+                State.VmTestStatus.ColDailyCheck = value ? General.OnBrush : General.NgBrush;
+            }
+        }
+
+
         //周辺機器ステータス
+        private static bool _StateG7sa;
+        public static bool StateG7sa
+        {
+            get { return _StateG7sa; }
+            set
+            {
+                _StateG7sa = value;
+                State.VmTestStatus.ColorG7sa = value ? StatePanelOkBrush : StatePanelNgBrush;
+            }
+        }
+
         private static bool _StateMbed;
         public static bool StateMbed
         {

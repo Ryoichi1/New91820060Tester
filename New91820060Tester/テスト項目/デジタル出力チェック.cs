@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Media;
 using static New91820060Tester.General;
 using static System.Threading.Thread;
 
@@ -15,7 +13,7 @@ namespace New91820060Tester
         {
             U9_1, U9_2, U9_3, U9_4, U9_5, U9_6, U9_7, U9_8,
             U10_1, U10_2, U10_3, U10_4, U10_5, U10_6, U10_7, U10_8,
-            Q1, Q2, /*Q3,*/
+            Q1, Q2, Q3,
             U11_3, U11_4, U11_5, U11_6, U11_7, U11_8,
             U209_1, U209_2, U209_3, U209_4, U209_5, U209_6, U209_7, U209_8,
             U213a1, U213a2, U213a3, U213b1, U213b2, U213b3, U213c1, U213c2, U213c3, U213d1, U213d2, U213d3, U213e1, U213e2, U213e3, U213f1, U213f2, U213f3,
@@ -54,104 +52,119 @@ namespace New91820060Tester
             {
                 return await Task<bool>.Run(() =>
                 {
-                    ResetViewModelExp();
-                    ResetViewModelOut();
-
-                    SetG7SA(true);//CN14よりAC200Vを入力する
-                    Sleep(300);
-
-                    Flags.AddDecision = false;
-                    InitList();//テストスペック毎回初期化
-
-                    SetAllOff();//出力初期化
-                    Sleep(300);
-
-                    return ListSpecs.All(L =>
+                    try
                     {
-                        resultOn = false;
-                        resultOff = false;
+                        ResetViewModelExp();
+                        ResetViewModelOut();
 
-                        if (Flags.ClickStopButton) return false;
+                        SetG7SA(true);//CN14よりAC200Vを入力する
+                        Sleep(300);
 
-                        //テストログの更新
-                        State.VmTestStatus.TestLog += "\r\n" + L.name.ToString() + " ONチェック";
+                        Flags.AddDecision = false;
+                        InitList();//テストスペック毎回初期化
 
-                        //ONチェック
-                        var cmd = GetOutputCmd(L.name);
-                        if (!Target.SendData($"W,{cmd},01")) return false;
-                        wait(L.name);
-                        AnalysisData(L.name);
+                        SetAllOff();//出力初期化
+                        Sleep(300);
 
-                        var targetState = ListSpecs.FirstOrDefault(l => l.name == L.name);
-                        switch (L.name)
+                        return ListSpecs.All(L =>
                         {
-                            case NAME.U213a1:
-                            case NAME.U213a2:
-                            case NAME.U213a3:
-                            case NAME.U213b1:
-                            case NAME.U213b2:
-                            case NAME.U213b3:
-                            case NAME.U213c1:
-                            case NAME.U213c2:
-                            case NAME.U213c3:
-                            case NAME.U213d1:
-                            case NAME.U213d2:
-                            case NAME.U213d3:
-                            case NAME.U213e1:
-                            case NAME.U213e2:
-                            case NAME.U213e3:
-                            case NAME.U213f1:
-                            case NAME.U213f2:
-                            case NAME.U213f3:
-                            case NAME.U214a1:
-                            case NAME.U214a2:
-                            case NAME.U214a3:
-                            case NAME.U214b1:
-                            case NAME.U214b2:
-                            case NAME.U214b3:
-                                resultOn = (targetState.Output && ListSpecs.Where(l => l.Output).Count() == 3);
-                                break;
-                            default:
-                                resultOn = (targetState.Output && ListSpecs.Where(l => l.Output).Count() == 1);
-                                break;
-                        }
+                            resultOn = false;
+                            resultOff = false;
 
-                        if (resultOn)
-                        {
+                            if (Flags.ClickStopButton) return false;
+
+                            //
+                            if (L.name == NAME.Q3)
+                            {
+                                if (!Flags.MustCheckQ3Out)
+                                    return true;//Q3未実装のため検査をスキップする
+                            }
+                            
+
                             //テストログの更新
-                            State.VmTestStatus.TestLog += "---PASS";
-                        }
-                        else
-                        {
-                            //テストログの更新
-                            State.VmTestStatus.TestLog += "---FAIL";
-                            return false;
-                        }
+                            State.VmTestStatus.TestLog += "\r\n" + L.name.ToString() + " ONチェック";
 
-                        //OFFチェック
-                        State.VmTestStatus.TestLog += "\r\n" + L.name.ToString() + " OFFチェック";
-                        if (!Target.SendData($"W,{cmd},00")) return false;
-                        wait(L.name);
-                        AnalysisData(L.name, true);
+                            //ONチェック
+                            var cmd = GetOutputCmd(L.name);
+                            if (!Target.SendData($"W,{cmd},01")) return false;
+                            wait(L.name);
+                            AnalysisData(L.name);
 
-                        resultOff = ListSpecs.All(list =>
-                        {
-                            return !list.Output;
+                            var targetState = ListSpecs.FirstOrDefault(l => l.name == L.name);
+                            switch (L.name)
+                            {
+                                case NAME.U213a1:
+                                case NAME.U213a2:
+                                case NAME.U213a3:
+                                case NAME.U213b1:
+                                case NAME.U213b2:
+                                case NAME.U213b3:
+                                case NAME.U213c1:
+                                case NAME.U213c2:
+                                case NAME.U213c3:
+                                case NAME.U213d1:
+                                case NAME.U213d2:
+                                case NAME.U213d3:
+                                case NAME.U213e1:
+                                case NAME.U213e2:
+                                case NAME.U213e3:
+                                case NAME.U213f1:
+                                case NAME.U213f2:
+                                case NAME.U213f3:
+                                case NAME.U214a1:
+                                case NAME.U214a2:
+                                case NAME.U214a3:
+                                case NAME.U214b1:
+                                case NAME.U214b2:
+                                case NAME.U214b3:
+                                    resultOn = (targetState.Output && ListSpecs.Where(l => l.Output).Count() == 3);
+                                    break;
+                                default:
+                                    resultOn = (targetState.Output && ListSpecs.Where(l => l.Output).Count() == 1);
+                                    break;
+                            }
+
+                            if (resultOn)
+                            {
+                                //テストログの更新
+                                State.VmTestStatus.TestLog += "---PASS";
+                            }
+                            else
+                            {
+                                //テストログの更新
+                                State.VmTestStatus.TestLog += "---FAIL";
+                                return false;
+                            }
+
+                            //OFFチェック
+                            State.VmTestStatus.TestLog += "\r\n" + L.name.ToString() + " OFFチェック";
+                            if (!Target.SendData($"W,{cmd},00")) return false;
+                            wait(L.name);
+                            AnalysisData(L.name, true);
+
+                            resultOff = ListSpecs.All(list =>
+                            {
+                                return !list.Output;
+                            });
+
+                            if (resultOff)
+                            {
+                                //テストログの更新
+                                State.VmTestStatus.TestLog += "---PASS";
+                                return true;
+                            }
+                            else
+                            {
+                                //テストログの更新
+                                State.VmTestStatus.TestLog += "---FAIL";
+                                return false;
+                            }
                         });
-
-                        if (resultOff)
-                        {
-                            //テストログの更新
-                            State.VmTestStatus.TestLog += "---PASS";
-                            return true;
-                        }
-                        else
-                        {
-                            //テストログの更新
-                            State.VmTestStatus.TestLog += "---FAIL";
-                            return false;
-                        }
-                    });
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 });
             }
             finally
@@ -183,10 +196,10 @@ namespace New91820060Tester
                 case NAME.U209_7:
                 case NAME.U209_8:
 
-                    Sleep(400);
+                    Sleep(300);
                     break;
                 default:
-                    Sleep(100);
+                    Sleep(50);
                     break;
             }
         }
@@ -217,7 +230,7 @@ namespace New91820060Tester
 
                 case NAME.Q1: cmd = "Q1,00"; break;
                 case NAME.Q2: cmd = "Q2,00"; break;
-                //case NAME.Q3:    cmd = "Q3,00"; break;
+                case NAME.Q3: cmd = "Q3,00"; break;
 
                 case NAME.U11_3: cmd = "U11,03"; break;
                 case NAME.U11_4: cmd = "U11,04"; break;
@@ -349,7 +362,7 @@ namespace New91820060Tester
 
             ListSpecs.FirstOrDefault(L => L.name == NAME.Q1).Output = (io1P7Data & 0b0000_1000) == 0;//IO1 P73
             ListSpecs.FirstOrDefault(L => L.name == NAME.Q2).Output = (io1P7Data & 0b0000_0100) == 0;//IO1 P72
-            //ListSpecs.FirstOrDefault(L => L.name == NAME.Q3).Output = (io2P7Data & 0b0001_0000) == 0;//IO2 P74
+            ListSpecs.FirstOrDefault(L => L.name == NAME.Q3).Output = (io2P7Data & 0b0001_0000) == 0;//IO2 P74
 
             ListSpecs.FirstOrDefault(L => L.name == NAME.U209_1).Output = (io2P7Data & 0b0100_0000) == 0;//IO2 P76
             ListSpecs.FirstOrDefault(L => L.name == NAME.U209_2).Output = (io1P3Data & 0b0100_0000) == 0;//IO1 P36
@@ -573,7 +586,7 @@ namespace New91820060Tester
 
             State.VmTestResults.OutQ1 = ListSpecs.FirstOrDefault(L => L.name == NAME.Q1).Output ? OnBrush : OffBrush;
             State.VmTestResults.OutQ2 = ListSpecs.FirstOrDefault(L => L.name == NAME.Q2).Output ? OnBrush : OffBrush;
-            //State.VmTestResults.OutQ3 = ListSpecs.FirstOrDefault(L => L.name == NAME.Q3).Output ? OnBrush : OffBrush;
+            State.VmTestResults.OutQ3 = ListSpecs.FirstOrDefault(L => L.name == NAME.Q3).Output ? OnBrush : OffBrush;
 
             State.VmTestResults.OutU11_3 = ListSpecs.FirstOrDefault(L => L.name == NAME.U11_3).Output ? OnBrush : OffBrush;
             State.VmTestResults.OutU11_4 = ListSpecs.FirstOrDefault(L => L.name == NAME.U11_4).Output ? OnBrush : OffBrush;
@@ -649,7 +662,7 @@ namespace New91820060Tester
 
             State.VmTestResults.ExpQ1 = onName == NAME.Q1 ? OnBrush : OffBrush;
             State.VmTestResults.ExpQ2 = onName == NAME.Q2 ? OnBrush : OffBrush;
-            //State.VmTestResults.ExpQ3 = onName == NAME.Q3 ? OnBrush : OffBrush;
+            State.VmTestResults.ExpQ3 = onName == NAME.Q3 ? OnBrush : OffBrush;
 
             State.VmTestResults.ExpU11_3 = onName == NAME.U11_3 ? OnBrush : OffBrush;
             State.VmTestResults.ExpU11_4 = onName == NAME.U11_4 ? OnBrush : OffBrush;

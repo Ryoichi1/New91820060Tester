@@ -159,6 +159,11 @@ namespace New91820060Tester
             FlagG7sa = !FlagG7sa;
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LPC1768.ClosePort();
+        }
     }
 
 }
