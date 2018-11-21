@@ -44,6 +44,7 @@ namespace New91820060Tester
         public static readonly string PassDataFolderPath_91820060_004 = $@"{RootPath}\検査データ\合格品データ\Item91820060_004\";
         public static readonly string PassDataFolderPath_91820060_005 = $@"{RootPath}\検査データ\合格品データ\Item91820060_005\";
         public static readonly string PassDataFolderPath_0A004259XX   = $@"{RootPath}\検査データ\合格品データ\Item_0A004259XX\";
+        public static readonly string PassDataFolderPath_0A004600XX   = $@"{RootPath}\検査データ\合格品データ\Item_0A004600XX\";
         public static readonly string FailDataFolderPath              = $@"{RootPath}\検査データ\不良品データ\";
         public static readonly string PassTestDataFormatPath              = $@"{RootPath}\検査データ\合格品データ\Format.csv";
         public static readonly string FailTestDataFormatPath              = $@"{RootPath}\検査データ\不良品データ\FormatNg.csv";

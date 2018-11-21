@@ -26,7 +26,6 @@ namespace New91820060Tester
         public static bool Click確認Button { get; set; }
         public static bool AllOk周辺機器接続 { get; set; }
 
-        public static bool SetAdapterForItem004 { get; set; }
         public static bool MustCheckQ3Out { get; set; }
 
         private static SolidColorBrush RetryPanelBrush = new SolidColorBrush();
@@ -46,6 +45,25 @@ namespace New91820060Tester
             StatePanelNgBrush.Opacity = StatePanelOpacity;
         }
 
+        private static bool _SetAdapterForAc100Input;
+        public static bool SetAdapterForAc100Input
+        {
+            get { return _SetAdapterForAc100Input; }
+            set
+            {
+                _SetAdapterForAc100Input = value;
+                if (_SetAdapterForAc100Input)
+                {
+                    State.VmTestStatus.ColAc100 = General.OnBrush;
+                    State.VmTestStatus.ColAc200 = General.OffBrush;
+                }
+                else
+                {
+                    State.VmTestStatus.ColAc100 = General.OffBrush;
+                    State.VmTestStatus.ColAc200 = General.OnBrush;
+                }
+            }
+        }
 
         private static bool _State日常点検;
         public static bool State日常点検

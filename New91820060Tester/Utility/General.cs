@@ -686,7 +686,7 @@ namespace New91820060Tester
 
         public static void SetG7SA(bool sw)
         {
-            if (sw) SetRY104(Flags.SetAdapterForItem004 ? true : false);
+            if (sw) SetRY104(Flags.SetAdapterForAc100Input ? true : false);
             Sleep(300);
             io1.OutBit(EPX64S.PORT.P1, EPX64S.BIT.b7, sw ? EPX64S.OUT.H : EPX64S.OUT.L);
             Flags.Ac200On = sw;

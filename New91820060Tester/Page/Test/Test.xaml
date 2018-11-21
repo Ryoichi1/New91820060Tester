@@ -504,7 +504,7 @@
             </Canvas>
         </Canvas>
 
-        <Canvas x:Name="CanvasStatus" Height="84" Canvas.Left="398" Canvas.Top="57" Width="506">
+        <Canvas x:Name="CanvasStatus" Height="84" Canvas.Left="398" Canvas.Top="57" Width="499">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="11"/>
@@ -581,6 +581,9 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
+            <Label Content="AC100" Height="19" Canvas.Left="295" Width="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Canvas.Top="59" Padding="0" Background="{Binding ColAc100}" FontSize="12"/>
+            <Label Content="AC200" Height="19" Canvas.Left="349" Width="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Canvas.Top="59" Padding="0" Background="{Binding ColAc200}" FontSize="12"/>
+            <TextBlock TextWrapping="Wrap" Text="CN13入力" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="79" RenderTransformOrigin="0.5,0.5" Canvas.Top="59" Canvas.Left="219"/>
 
         </Canvas>
         <Label x:Name="labelMessage" Content="{Binding Message, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="51" VerticalAlignment="Center" Width="1326" Canvas.Left="7" Canvas.Top="2" FontSize="38" Foreground="White" VerticalContentAlignment="Center" Padding="0">

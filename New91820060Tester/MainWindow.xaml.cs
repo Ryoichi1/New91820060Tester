@@ -137,6 +137,8 @@ namespace New91820060Tester
             State.VmTestStatus.ColPt82 = OffBrush;
             State.VmTestStatus.ColPt62 = OffBrush;
 
+            State.VmTestStatus.ColAc100 = OffBrush;
+            State.VmTestStatus.ColAc200 = OffBrush;
 
             Flags.SetOpecode = false;
             Flags.SetModel = false;
@@ -289,7 +291,8 @@ namespace New91820060Tester
             var inputModel = State.VmMainWindow.Model;
 
             //ITEM004はAC100V入力使用なので、CN13への入力は18Kオームを挿入する必要があります
-            Flags.SetAdapterForItem004 = inputModel == "91820060-004/R" ? true : false;
+            Flags.SetAdapterForAc100Input = (inputModel == "91820060-004/R" || 
+                                          inputModel == "0A004600XX0/R") ? true : false;
 
             //ITEM005はQ3周辺回路未実装のため検査をスキップする
             Flags.MustCheckQ3Out = inputModel == "91820060-005/R" ? false : true;
@@ -348,6 +351,7 @@ namespace New91820060Tester
                     else if (i.Model.Contains("91820060-004")) State.PathForTestData = Constants.PassDataFolderPath_91820060_004;
                     else if (i.Model.Contains("91820060-005")) State.PathForTestData = Constants.PassDataFolderPath_91820060_005;
                     else if (i.Model.Contains("0A004259XX0")) State.PathForTestData = Constants.PassDataFolderPath_0A004259XX;
+                    else if (i.Model.Contains("0A004600XX0")) State.PathForTestData = Constants.PassDataFolderPath_0A004600XX;
 
                     timerTextInput.Stop();
                     Flags.SetModel = true;

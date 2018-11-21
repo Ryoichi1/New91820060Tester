@@ -19,6 +19,12 @@ namespace New91820060Tester
         private Brush _ColPt82;
         public Brush ColPt82 { get { return _ColPt82; } set { SetProperty(ref _ColPt82, value); } }
 
+        private Brush _ColAc100;
+        public Brush ColAc100 { get { return _ColAc100; } set { SetProperty(ref _ColAc100, value); } }
+
+        private Brush _ColAc200;
+        public Brush ColAc200 { get { return _ColAc200; } set { SetProperty(ref _ColAc200, value); } }
+
         //ファームウェア情報 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         private string _FwVer;
         public string FwVer
